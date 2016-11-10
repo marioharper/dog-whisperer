@@ -1,0 +1,26 @@
+{
+  "intents": [
+    {
+      "intent": "GetDogBreed",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "GetDogActivity",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    }
+  ]
+}

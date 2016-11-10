@@ -1,0 +1,8 @@
+GetDogBreed {Dog} what is his breed
+GetDogBreed {Dog} what is her breed
+GetDogBreed {Dog} what is their breed
+
+GetDogActivity {Dog} what did you do {Date}
+GetDogActivity {Dog} what he did {Date}
+GetDogActivity {Dog} what she did {Date}
+GetDogActivity {Dog} what they did {Date}
