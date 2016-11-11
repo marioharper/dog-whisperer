@@ -1,0 +1,9 @@
+{
+  "name": "dog-whisperer",
+  "description": "Dog Whisperer alexa skill",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::584725211772:role/dog-whisperer_lambda_function",
+  "environment": {},
+  "defaultEnvironment": "dev"
+}
