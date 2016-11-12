@@ -41,8 +41,13 @@ function getDogBreed(intent, session, callback) {
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
+    let breed = `a ${dog.breed1.name}`;
 
-    speechOutput = `${dog.name} says: bark bark I am a ${dog.breed1.name}.`;
+    if(dog.breed2.name){
+        breed = `part ${dog.breed1.name} and part ${dog.breed2.name}`
+    }
+
+    speechOutput = `${dog.name} says: bark bark I am ${breed}.`;
 
     callback(sessionAttributes,
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
