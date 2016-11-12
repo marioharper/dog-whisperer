@@ -1,6 +1,15 @@
 {
   "intents": [
     {
+      "intent": "SetDogName",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
       "intent": "GetDogBreed",
       "slots": [
         {
@@ -21,6 +30,15 @@
           "type": "AMAZON.DATE"
         }
       ]
+    }, 
+    {
+      "intent": "AMAZON.HelpIntent"
+    }, 
+    {
+      "intent": "AMAZON.StopIntent"
+    }, 
+    {
+      "intent": "AMAZON.CancelIntent"
     }
   ]
 }

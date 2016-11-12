@@ -1,8 +1,18 @@
-GetDogBreed {Dog} what is his breed
-GetDogBreed {Dog} what is her breed
-GetDogBreed {Dog} what is their breed
+SetDogName Talk to {Dog}
+SetDogName Speak with {Dog}
 
-GetDogActivity {Dog} what did you do {Date}
-GetDogActivity {Dog} what he did {Date}
-GetDogActivity {Dog} what she did {Date}
-GetDogActivity {Dog} what they did {Date}
+GetDogBreed What is his breed
+GetDogBreed What is her breed
+GetDogBreed What is their breed
+GetDogBreed What is the breed
+GetDogBreed What is your breed
+GetDogBreed What's his breed
+GetDogBreed What's her breed
+GetDogBreed What's their breed
+GetDogBreed What's the breed
+GetDogBreed What's your breed
+
+GetDogActivity What did you do {Date}
+GetDogActivity What he did {Date}
+GetDogActivity What she did {Date}
+GetDogActivity What they did {Date}

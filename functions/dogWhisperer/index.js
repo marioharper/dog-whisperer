@@ -1,37 +1,7 @@
 'use strict';
 
-
-// --------------- Helpers that build all of the responses -----------------------
-
-function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
-    return {
-        outputSpeech: {
-            type: 'PlainText',
-            text: output,
-        },
-        card: {
-            type: 'Simple',
-            title: `SessionSpeechlet - ${title}`,
-            content: `SessionSpeechlet - ${output}`,
-        },
-        reprompt: {
-            outputSpeech: {
-                type: 'PlainText',
-                text: repromptText,
-            },
-        },
-        shouldEndSession,
-    };
-}
-
-function buildResponse(sessionAttributes, speechletResponse) {
-    return {
-        version: '1.0',
-        sessionAttributes,
-        response: speechletResponse,
-    };
-}
-
+var fitBark = require('./fitBark');
+var helpers = require('./helpers');
 
 // --------------- Functions that control the skill's behavior -----------------------
 
@@ -46,7 +16,7 @@ function getWelcomeResponse(callback) {
     const shouldEndSession = false;
 
     callback(sessionAttributes,
-        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
 function handleSessionEndRequest(callback) {
@@ -55,7 +25,7 @@ function handleSessionEndRequest(callback) {
     // Setting this to true ends the session and exits the skill.
     const shouldEndSession = true;
 
-    callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
+    callback({}, helpers.buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
 }
 
 function createSessionAttributes(dogName) {
@@ -64,17 +34,16 @@ function createSessionAttributes(dogName) {
     };
 }
 
-function getDogBreed(intent, session, callback){
+function getDogBreed(intent, session, callback) {
     const cardTitle = intent.name;
-    const dogNameSlot = intent.slots.Dog;
+    const dogName = getDogNameFromSession(intent, session, callback);
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
     let dogBreed = 'Golden Retriever';
-    
-    if (dogNameSlot) {
-        const dogName = dogNameSlot.value;
+
+    if (dogName) {
         speechOutput = `${dogName} says: bark bark I am a ${dogBreed}.`;
     } else {
         speechOutput = "I'm not sure what your dogs name is. Please try again.";
@@ -82,30 +51,25 @@ function getDogBreed(intent, session, callback){
     }
 
     callback(sessionAttributes,
-         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
-function getDogActivity(intent, session, callback){
+function getDogActivity(intent, session, callback) {
     const cardTitle = intent.name;
-    const dogNameSlot = intent.slots.Dog;
+    const dogName = getDogNameFromSession(intent, session, callback);
     const activityDateSlot = intent.slots.Date;
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
 
-    if (dogNameSlot && activityDateSlot) {
-        const dogName = dogNameSlot.value;
+    if (dogName && activityDateSlot) {
         const activityDate = activityDateSlot.value;
-        
         speechOutput = `${dogName} says: bark bark ${activityDate} I slept a ton!`;
-    } else {
-        speechOutput = "I'm not sure what your dogs name is. Please try again.";
-        repromptText = "I'm not sure what your dogs name is.";
     }
 
     callback(sessionAttributes,
-         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
 /**
@@ -121,41 +85,45 @@ function setDogInSession(intent, session, callback) {
 
     if (dogNameSlot) {
         const dogName = dogNameSlot.value;
-        sessionAttributes = createSessionAttributes(dogName);
-        speechOutput = `I now know your dogs name is ${dogName}. I can now talk to 
-            ${dogName} for you.`;
-        repromptText = `You can ask me to say anything to ${dogName}, try something like
-            what did you do yesterday?`;
+
+        var dogInfo = fitBark.getDog(dogName);
+        if (dogInfo) {
+            sessionAttributes = createSessionAttributes(dogName);
+            speechOutput = `I can now talk to ${dogName} for you. Say something like, what did you do yesterday?`;
+            repromptText = `You can ask me to say anything to ${dogName}, try something like what did you do yesterday?`;
+        }else{
+            speechOutput = `I did not recognize ${dogName} as a dog related to you. Please try talking to a dog you are related to.`;
+            repromptText = `You can only talk to dogs you have a relation to. Please tell me which dog to talk to by saying, talk to maxwell`; 
+        }
     } else {
-        speechOutput = "I'm not sure what your dogs name is. Please try again.";
-        repromptText = `I'm not sure what your dogs name is. You can tell me which of your dogs
-            to talk to by saying, talk to Max`;
+        speechOutput = "I didn't catch which dog you wanted me to talk to. Please tell me by saying talk to charlie.";
+        repromptText = "Please tell me which dog to talk to by saying talk to max."
     }
 
     callback(sessionAttributes,
-         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
 function getDogNameFromSession(intent, session, callback) {
-    let dogName;
-    const repromptText = null;
-    const sessionAttributes = {};
-    let shouldEndSession = false;
+    const cardTitle = intent.name;
     let speechOutput = '';
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    let shouldEndSession = false;
+    let dogName;
 
     if (session.attributes) {
         dogName = session.attributes.dogName;
     }
 
     if (dogName) {
-        speechOutput = `Your dogs name is ${dogName}. Goodbye.`;
-        shouldEndSession = true;
+        return dogName;
     } else {
-        speechOutput = "I'm not sure what your dogs name is, what is it again?";
+        speechOutput = "I didn't catch which dog you wanted me to talk to. Please tell me by saying talk to charlie.";
+        repromptText = "Please tell me which dog to talk to by saying talk to max."
+        callback(sessionAttributes,
+            helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
-
-    callback(sessionAttributes,
-         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
 }
 
 
@@ -178,45 +146,28 @@ function onLaunch(launchRequest, session, callback) {
     getWelcomeResponse(callback);
 }
 
-/**
- * Called when the user specifies an intent for this skill.
- */
 function onIntent(intentRequest, session, callback) {
     console.log(`onIntent requestId=${intentRequest.requestId}, sessionId=${session.sessionId}`);
 
     const intent = intentRequest.intent;
     const intentName = intentRequest.intent.name;
 
-    //setDogInSession(intent, session, callback);
-
-    if(intentName === 'TalkTo'){
+    if (intentName === 'SetDogName') {
         setDogInSession(intent, session, callback);
-    } else if(intentName === 'GetDogBreed'){
+    } else if (intentName === 'GetDogBreed') {
         getDogBreed(intent, session, callback);
-    } else if(intentName === 'GetDogActivity'){
+    } else if (intentName === 'GetDogActivity') {
         getDogActivity(intent, session, callback);
-    }else {
-        throw new Error('Invalid intent');
-    }
-
-    /* Dispatch to your skill's intent handlers
-    if (intentName === 'MyColorIsIntent') {
-        setDogInSession(intent, session, callback);
-    } else if (intentName === 'WhatsMyColorIntent') {
-        getColorFromSession(intent, session, callback);
     } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         handleSessionEndRequest(callback);
     } else {
         throw new Error('Invalid intent');
-    }*/
+    }
+
 }
 
-/**
- * Called when the user ends the session.
- * Is not called when the skill returns shouldEndSession=true.
- */
 function onSessionEnded(sessionEndedRequest, session) {
     console.log(`onSessionEnded requestId=${sessionEndedRequest.requestId}, sessionId=${session.sessionId}`);
     // Add cleanup logic here
@@ -249,13 +200,13 @@ exports.handle = (event, context, callback) => {
             onLaunch(event.request,
                 event.session,
                 (sessionAttributes, speechletResponse) => {
-                    callback(null, buildResponse(sessionAttributes, speechletResponse));
+                    callback(null, helpers.buildResponse(sessionAttributes, speechletResponse));
                 });
         } else if (event.request.type === 'IntentRequest') {
             onIntent(event.request,
                 event.session,
                 (sessionAttributes, speechletResponse) => {
-                    callback(null, buildResponse(sessionAttributes, speechletResponse));
+                    callback(null, helpers.buildResponse(sessionAttributes, speechletResponse));
                 });
         } else if (event.request.type === 'SessionEndedRequest') {
             onSessionEnded(event.request, event.session);
