@@ -28,27 +28,35 @@ function handleSessionEndRequest(callback) {
     callback({}, helpers.buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
 }
 
-function createSessionAttributes(dogName) {
+function createSessionAttributes(dog) {
     return {
-        dogName,
+        dog,
     };
 }
 
 function getDogBreed(intent, session, callback) {
     const cardTitle = intent.name;
-    const dogName = getDogNameFromSession(intent, session, callback);
+    const dog = getDogFromSession(intent, session, callback);
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
-    let dogBreed = 'Golden Retriever';
 
-    if (dogName) {
-        speechOutput = `${dogName} says: bark bark I am a ${dogBreed}.`;
-    } else {
-        speechOutput = "I'm not sure what your dogs name is. Please try again.";
-        repromptText = "I'm not sure what your dogs name is.";
-    }
+    speechOutput = `${dog.name} says: bark bark I am a ${dog.breed1.name}.`;
+
+    callback(sessionAttributes,
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
+function getDogMedicalConditions(intent, session, callback) {
+    const cardTitle = intent.name;
+    const dog = getDogFromSession(intent, session, callback);
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+
+    speechOutput = `${dog.name} says: bark I am ${dog.medical_conditions[0].name}.`;
 
     callback(sessionAttributes,
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -56,16 +64,16 @@ function getDogBreed(intent, session, callback) {
 
 function getDogActivity(intent, session, callback) {
     const cardTitle = intent.name;
-    const dogName = getDogNameFromSession(intent, session, callback);
+    const dog = getDogFromSession(intent, session, callback);
     const activityDateSlot = intent.slots.Date;
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
 
-    if (dogName && activityDateSlot) {
+    if (dog && activityDateSlot) {
         const activityDate = activityDateSlot.value;
-        speechOutput = `${dogName} says: bark bark ${activityDate} I slept a ton!`;
+        speechOutput = `${dog.name} says: bark bark ${activityDate} I slept a ton!`;
     }
 
     callback(sessionAttributes,
@@ -86,11 +94,11 @@ function setDogInSession(intent, session, callback) {
     if (dogNameSlot) {
         const dogName = dogNameSlot.value;
 
-        var dogInfo = fitBark.getDog(dogName);
-        if (dogInfo) {
-            sessionAttributes = createSessionAttributes(dogName);
-            speechOutput = `I can now talk to ${dogName} for you. Say something like, what did you do yesterday?`;
-            repromptText = `You can ask me to say anything to ${dogName}, try something like what did you do yesterday?`;
+        var dog = fitBark.getDog(dogName);
+        if (dog) {
+            sessionAttributes = createSessionAttributes(dog);
+            speechOutput = `I can now talk to ${dog.name} for you. Say something like, what did you do yesterday?`;
+            repromptText = `You can ask me to say anything to ${dog.name}, try something like what did you do yesterday?`;
         }else{
             speechOutput = `I did not recognize ${dogName} as a dog related to you. Please try talking to a dog you are related to.`;
             repromptText = `You can only talk to dogs you have a relation to. Please tell me which dog to talk to by saying, talk to maxwell`; 
@@ -104,20 +112,20 @@ function setDogInSession(intent, session, callback) {
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
-function getDogNameFromSession(intent, session, callback) {
+function getDogFromSession(intent, session, callback) {
     const cardTitle = intent.name;
     let speechOutput = '';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
-    let dogName;
+    let dog;
 
     if (session.attributes) {
-        dogName = session.attributes.dogName;
+        dog = session.attributes.dog;
     }
 
-    if (dogName) {
-        return dogName;
+    if (dog) {
+        return dog;
     } else {
         speechOutput = "I didn't catch which dog you wanted me to talk to. Please tell me by saying talk to charlie.";
         repromptText = "Please tell me which dog to talk to by saying talk to max."
@@ -154,7 +162,9 @@ function onIntent(intentRequest, session, callback) {
 
     if (intentName === 'SetDogName') {
         setDogInSession(intent, session, callback);
-    } else if (intentName === 'GetDogBreed') {
+    } else if (intentName === 'GetDogMedicalConditions') {
+        getDogMedicalConditions(intent, session, callback);
+    }else if (intentName === 'GetDogBreed') {
         getDogBreed(intent, session, callback);
     } else if (intentName === 'GetDogActivity') {
         getDogActivity(intent, session, callback);

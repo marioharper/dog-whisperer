@@ -19,6 +19,15 @@
       ]
     },
     {
+      "intent": "GetDogMedicalConditions",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
       "intent": "GetDogActivity",
       "slots": [
         {

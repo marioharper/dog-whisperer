@@ -1,6 +1,12 @@
 SetDogName Talk to {Dog}
 SetDogName Speak with {Dog}
 
+GetDogMedicalConditions Do you have any illnesses
+GetDogMedicalConditions Do you have any sicknesses
+GetDogMedicalConditions Are you sick 
+GetDogMedicalConditions Do you have any problems 
+GetDogMedicalConditions What are your illnesses  
+
 GetDogBreed What is his breed
 GetDogBreed What is her breed
 GetDogBreed What is their breed
