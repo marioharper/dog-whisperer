@@ -1,6 +1,7 @@
 'use strict';
 
-var fitBark = require('./fitBark');
+var FitBark = require('fit-bark');
+var fitBark = new FitBark(process.env.FITBARK_API_TOKEN);
 var helpers = require('./helpers');
 
 // --------------- Functions that control the skill's behavior -----------------------
@@ -61,6 +62,11 @@ function getDogMedicalConditions(intent, session, callback) {
     const shouldEndSession = false;
     let speechOutput = '';
 
+    if(dog.medical_conditions.length > 0){
+        speechOutput = `${dog.name} says: bark I am ${dog.medical_conditions[0].name}.`;
+    }else{
+
+    }
     speechOutput = `${dog.name} says: bark I am ${dog.medical_conditions[0].name}.`;
 
     callback(sessionAttributes,

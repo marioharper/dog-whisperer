@@ -7,6 +7,6 @@
   "environment": {},
   "defaultEnvironment": "dev",
   "hooks": {
-    "build": "cd ../../ && npm install --production && cd - && cp -rf ../../node_modules ./node_modules"
+    "build": "npm install --production"
   }
 }
