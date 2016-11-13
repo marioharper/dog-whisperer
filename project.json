@@ -5,5 +5,8 @@
   "timeout": 5,
   "role": "arn:aws:iam::584725211772:role/dog-whisperer_lambda_function",
   "environment": {},
-  "defaultEnvironment": "dev"
+  "defaultEnvironment": "dev",
+  "hooks": {
+    "build": "cd ../../ && npm install --production && cd - && cp -rf ../../node_modules ./node_modules"
+  }
 }

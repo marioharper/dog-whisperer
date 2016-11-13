@@ -1,0 +1,24 @@
+{
+  "name": "alexa-skill-dog-whisperer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marioharper/alexa-skill-dog-whisperer.git"
+  },
+  "author": "Mario Harper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marioharper/alexa-skill-dog-whisperer/issues"
+  },
+  "homepage": "https://github.com/marioharper/alexa-skill-dog-whisperer#readme",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "request": "^2.78.0",
+    "request-promise": "^4.1.1"
+  }
+}

@@ -9,6 +9,6 @@ terraform apply
 sleep 2
 
 cd ../../
-apex deploy
+apex deploy --set FITBARK_API_TOKEN=$FITBARK_API_TOKEN
 apex infra plan
 apex infra apply

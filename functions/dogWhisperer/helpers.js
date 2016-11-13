@@ -7,20 +7,20 @@ function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
     return {
         outputSpeech: {
             type: 'PlainText',
-            text: output,
+            text: output
         },
         card: {
             type: 'Simple',
             title: `SessionSpeechlet - ${title}`,
-            content: `SessionSpeechlet - ${output}`,
+            content: `SessionSpeechlet - ${output}`
         },
         reprompt: {
             outputSpeech: {
                 type: 'PlainText',
-                text: repromptText,
+                text: repromptText
             },
         },
-        shouldEndSession,
+        shouldEndSession
     };
 }
 
@@ -28,6 +28,6 @@ function buildResponse(sessionAttributes, speechletResponse) {
     return {
         version: '1.0',
         sessionAttributes,
-        response: speechletResponse,
+        response: speechletResponse
     };
 }

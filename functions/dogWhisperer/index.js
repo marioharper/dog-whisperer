@@ -99,22 +99,27 @@ function setDogInSession(intent, session, callback) {
     if (dogNameSlot) {
         const dogName = dogNameSlot.value;
 
-        var dog = fitBark.getDog(dogName);
-        if (dog) {
-            sessionAttributes = createSessionAttributes(dog);
-            speechOutput = `I can now talk to ${dog.name} for you. Say something like, what did you do yesterday?`;
-            repromptText = `You can ask me to say anything to ${dog.name}, try something like what did you do yesterday?`;
-        }else{
-            speechOutput = `I did not recognize ${dogName} as a dog related to you. Please try talking to a dog you are related to.`;
-            repromptText = `You can only talk to dogs you have a relation to. Please tell me which dog to talk to by saying, talk to maxwell`; 
-        }
+        fitBark.getDog(dogName).then((dog)=>{
+            if (dog) {
+                sessionAttributes = createSessionAttributes(dog);
+                speechOutput = `I can now talk to ${dog.name} for you. Say something like, what did you do yesterday?`;
+                repromptText = `You can ask me to say anything to ${dog.name}, try something like what did you do yesterday?`;
+            }else{
+                speechOutput = `I did not recognize ${dogName} as a dog related to you. Please try talking to a dog you are related to.`;
+                repromptText = `You can only talk to dogs you have a relation to. Please tell me which dog to talk to by saying, talk to maxwell`; 
+            }
+
+            callback(sessionAttributes,
+                helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        });
+
     } else {
         speechOutput = "I didn't catch which dog you wanted me to talk to. Please tell me by saying talk to charlie.";
         repromptText = "Please tell me which dog to talk to by saying talk to max."
+        
+        callback(sessionAttributes,
+            helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
-
-    callback(sessionAttributes,
-        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
 function getDogFromSession(intent, session, callback) {
