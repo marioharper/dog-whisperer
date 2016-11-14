@@ -1,6 +1,6 @@
 'use strict';
 
-var FitBark = require('fit-bark');
+var FitBark = require('fitbark-node-client');
 var fitBark = new FitBark(process.env.FITBARK_API_TOKEN);
 var helpers = require('./helpers');
 
