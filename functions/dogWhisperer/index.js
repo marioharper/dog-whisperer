@@ -44,7 +44,7 @@ function getDogBreed(intent, session, callback) {
     let speechOutput = '';
     let breed = `a ${dog.breed1.name}`;
 
-    if(dog.breed2.name){
+    if (dog.breed2.name) {
         breed = `part ${dog.breed1.name} and part ${dog.breed2.name}`
     }
 
@@ -62,9 +62,9 @@ function getDogMedicalConditions(intent, session, callback) {
     const shouldEndSession = false;
     let speechOutput = '';
 
-    if(dog.medical_conditions.length > 0){
+    if (dog.medical_conditions.length > 0) {
         speechOutput = `${dog.name} says: bark I am ${dog.medical_conditions[0].name}.`;
-    }else{
+    } else {
         speechOutput = `${dog.name} says: nope, I do not have any medical conditions.`;
     }
 
@@ -81,9 +81,9 @@ function getBatteryLevel(intent, session, callback) {
     let speechOutput = '';
 
     let recommendation = '';
-    if(dog.battery_level > 50){
+    if (dog.battery_level > 50) {
         recommendation = "doesn't need charging"
-    } else if (dog.battery_level > 30){
+    } else if (dog.battery_level > 30) {
         recommendation = "should be charged soon"
     } else {
         recommendation = "needs to be charged"
@@ -121,7 +121,7 @@ function getDogWeight(intent, session, callback) {
     const shouldEndSession = false;
     let speechOutput = '';
 
-    if(dog){
+    if (dog) {
         speechOutput = `${dog.name} says: bark bark I weigh ${dog.weight} ${dog.weight_unit}!`;
     }
 
@@ -147,9 +147,9 @@ function getSpayedOrNeutered(intent, session, callback) {
         spayedOrNeutered = 'spayed';
     }
 
-    if (!dog.neutered){
+    if (!dog.neutered) {
         speechOutput = `${dog.name} says: woof woof no, I am not ${spayedOrNeutered}.`;
-    }else{
+    } else {
         speechOutput = `${dog.name} says: woof woof I am a ${gender} dog so I am ${spayedOrNeutered}.`;
     }
 
@@ -167,7 +167,28 @@ function getDogBirthday(intent, session, callback) {
     const age = helpers.calculateAge(new Date(dog.birth));
 
 
-    speechOutput = `${dog.name} says: bark bark my birthday is ${dog.birth}. I will be turning ${age+1}. What are you getting me?`;
+    speechOutput = `${dog.name} says: bark bark my birthday is ${dog.birth}. I will be turning ${age + 1}. What are you getting me?`;
+
+    callback(sessionAttributes,
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
+function getDogGender(intent, session, callback) {
+    const cardTitle = intent.name;
+    const dog = getDogFromSession(intent, session, callback);
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+    let gender = ''; 
+
+    if (dog.gender == 'M') {
+        gender = 'male';
+    } else {
+        gender = 'female';
+    }
+
+    speechOutput = `${dog.name} says: I am a ${gender} dog.`;
 
     callback(sessionAttributes,
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -187,14 +208,14 @@ function setDogInSession(intent, session, callback) {
     if (dogNameSlot) {
         const dogName = dogNameSlot.value;
 
-        fitBark.getDog(dogName).then((dog)=>{
+        fitBark.getDog(dogName).then((dog) => {
             if (dog) {
                 sessionAttributes = createSessionAttributes(dog);
                 speechOutput = `I can now talk to ${dog.name} for you. Say something like, what did you do yesterday?`;
                 repromptText = `You can ask me to say anything to ${dog.name}, try something like what did you do yesterday?`;
-            }else{
+            } else {
                 speechOutput = `I did not recognize ${dogName} as a dog related to you. Please try talking to a dog you are related to.`;
-                repromptText = `You can only talk to dogs you have a relation to. Please tell me which dog to talk to by saying, talk to maxwell`; 
+                repromptText = `You can only talk to dogs you have a relation to. Please tell me which dog to talk to by saying, talk to maxwell`;
             }
 
             callback(sessionAttributes,
@@ -204,7 +225,7 @@ function setDogInSession(intent, session, callback) {
     } else {
         speechOutput = "I didn't catch which dog you wanted me to talk to. Please tell me by saying talk to charlie.";
         repromptText = "Please tell me which dog to talk to by saying talk to max."
-        
+
         callback(sessionAttributes,
             helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
@@ -274,7 +295,9 @@ function onIntent(intentRequest, session, callback) {
         getDogWeight(intent, session, callback);
     } else if (intentName === 'GetDogBirthday') {
         getDogBirthday(intent, session, callback);
-    }  else if (intentName === 'AMAZON.HelpIntent') {
+    } else if (intentName === 'GetDogGender') {
+        getDogGender(intent, session, callback);
+    } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         handleSessionEndRequest(callback);

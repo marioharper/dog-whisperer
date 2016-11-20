@@ -37,6 +37,9 @@
       "intent": "GetDogBirthday"
     },
     {
+      "intent": "GetDogGender"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }, 
     {

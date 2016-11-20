@@ -56,3 +56,11 @@ GetDogBirthday When were you born
 GetDogBirthday Is today your birthday
 GetDogBirthday Is tomorrow your birthday
 GetDogBirthday What is the date of your birthday
+
+GetDogGender Are you a boy or a girl
+GetDogGender Are you a boy
+GetDogGender Are you a girl
+GetDogGender Are you a male
+GetDogGender Are you a female
+GetDogGender What is your gender
+GetDogGender What is your sex
