@@ -20,11 +20,15 @@ function getWelcomeResponse(callback) {
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
-function handleSessionEndRequest(callback) {
+function handleSessionEndRequest(intent, session, callback) {
     const cardTitle = 'Session Ended';
-    const speechOutput = 'Talk to you later!';
-    // Setting this to true ends the session and exits the skill.
+    let speechOutput = 'Closing Dog Whisperer';
+    const dog = getDogFromSession(intent, session, callback);
     const shouldEndSession = true;
+
+    if (dog) {
+        speechOutput = `${dog.name} says: Love you, talk to you later!`;
+    }
 
     callback({}, helpers.buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
 }
@@ -300,7 +304,7 @@ function onIntent(intentRequest, session, callback) {
     } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
-        handleSessionEndRequest(callback);
+        handleSessionEndRequest(intent, session, callback);
     } else {
         throw new Error('Invalid intent');
     }
