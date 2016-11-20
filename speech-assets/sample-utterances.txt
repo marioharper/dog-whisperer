@@ -22,3 +22,12 @@ GetDogActivity What did you do {Date}
 GetDogActivity What he did {Date}
 GetDogActivity What she did {Date}
 GetDogActivity What they did {Date}
+
+GetBatteryLevel What is your collars battery level
+GetBatteryLevel What is your battery at
+GetBatteryLevel Is your battery running low
+GetBatteryLevel Is your collar running low
+GetBatteryLevel What is your battery percentage
+GetBatteryLevel Does your battery need charging
+GetBatteryLevel Does your collar need charging
+GetBatteryLevel How is your battery level

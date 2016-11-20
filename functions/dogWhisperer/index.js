@@ -73,6 +73,29 @@ function getDogMedicalConditions(intent, session, callback) {
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
+function getBatteryLevel(intent, session, callback) {
+    const cardTitle = intent.name;
+    const dog = getDogFromSession(intent, session, callback);
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+
+    let recommendation = '';
+    if(dog.battery_level > 50){
+        recommendation = "doesn't need charging"
+    } else if (dog.battery_level > 30){
+        recommendation = "should be charged soon"
+    } else {
+        recommendation = "needs to be charged"
+    }
+
+    speechOutput = `${dog.name} says: bow wow my battery is at ${dog.battery_level} percent. My FitBark ${recommendation}.`;
+
+    callback(sessionAttributes,
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
 function getDogActivity(intent, session, callback) {
     const cardTitle = intent.name;
     const dog = getDogFromSession(intent, session, callback);
@@ -180,11 +203,13 @@ function onIntent(intentRequest, session, callback) {
         setDogInSession(intent, session, callback);
     } else if (intentName === 'GetDogMedicalConditions') {
         getDogMedicalConditions(intent, session, callback);
-    }else if (intentName === 'GetDogBreed') {
+    } else if (intentName === 'GetDogBreed') {
         getDogBreed(intent, session, callback);
     } else if (intentName === 'GetDogActivity') {
         getDogActivity(intent, session, callback);
-    } else if (intentName === 'AMAZON.HelpIntent') {
+    } else if (intentName === 'GetBatteryLevel') {
+        getBatteryLevel(intent, session, callback);
+    }else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         handleSessionEndRequest(callback);
