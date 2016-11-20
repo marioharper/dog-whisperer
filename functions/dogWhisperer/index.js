@@ -116,14 +116,15 @@ function getDogActivity(intent, session, callback) {
 function getDogWeight(intent, session, callback) {
     const cardTitle = intent.name;
     const dog = getDogFromSession(intent, session, callback);
-    const activityDateSlot = intent.slots.Date;
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
 
-    speechOutput = `${dog.name} says: bark bark I weigh ${dog.weight} ${dog.weight_unit}!`;
-    
+    if(dog){
+        speechOutput = `${dog.name} says: bark bark I weigh ${dog.weight} ${dog.weight_unit}!`;
+    }
+
     callback(sessionAttributes,
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
@@ -131,7 +132,6 @@ function getDogWeight(intent, session, callback) {
 function getSpayedOrNeutered(intent, session, callback) {
     const cardTitle = intent.name;
     const dog = getDogFromSession(intent, session, callback);
-    const activityDateSlot = intent.slots.Date;
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
