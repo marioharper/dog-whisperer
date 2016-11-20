@@ -34,6 +34,9 @@
       "intent": "GetDogWeight"
     },
     {
+      "intent": "GetDogBirthday"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }, 
     {

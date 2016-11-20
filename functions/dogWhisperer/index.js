@@ -157,6 +157,22 @@ function getSpayedOrNeutered(intent, session, callback) {
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
+function getDogBirthday(intent, session, callback) {
+    const cardTitle = intent.name;
+    const dog = getDogFromSession(intent, session, callback);
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+    const age = helpers.calculateAge(new Date(dog.birth));
+
+
+    speechOutput = `${dog.name} says: bark bark my birthday is ${dog.birth}. I will be turning ${age+1}. What are you getting me?`;
+
+    callback(sessionAttributes,
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
 /**
  * Sets the dog in the session and prepares the speech to reply to the user.
  */
@@ -256,7 +272,9 @@ function onIntent(intentRequest, session, callback) {
         getSpayedOrNeutered(intent, session, callback);
     } else if (intentName === 'GetDogWeight') {
         getDogWeight(intent, session, callback);
-    } else if (intentName === 'AMAZON.HelpIntent') {
+    } else if (intentName === 'GetDogBirthday') {
+        getDogBirthday(intent, session, callback);
+    }  else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         handleSessionEndRequest(callback);
