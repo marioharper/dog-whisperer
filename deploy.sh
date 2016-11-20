@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e 
 
 export AWS_REGION="us-east-1"
 

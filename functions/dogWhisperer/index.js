@@ -114,6 +114,36 @@ function getDogActivity(intent, session, callback) {
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
+
+function getSpayedOrNeutered(intent, session, callback) {
+    const cardTitle = intent.name;
+    const dog = getDogFromSession(intent, session, callback);
+    const activityDateSlot = intent.slots.Date;
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+    let spayedOrNeutered = '';
+    let gender = '';
+
+    if (dog.gender == 'M') {
+        gender = 'male';
+        spayedOrNeutered = 'neutered';
+    } else {
+        gender = 'female';
+        spayedOrNeutered = 'spayed';
+    }
+
+    if (!dog.neutered){
+        speechOutput = `${dog.name} says: woof woof no, I am not ${spayedOrNeutered}.`;
+    }else{
+        speechOutput = `${dog.name} says: woof woof I am a ${gender} dog so I am ${spayedOrNeutered}.`;
+    }
+
+    callback(sessionAttributes,
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
 /**
  * Sets the dog in the session and prepares the speech to reply to the user.
  */
@@ -209,7 +239,9 @@ function onIntent(intentRequest, session, callback) {
         getDogActivity(intent, session, callback);
     } else if (intentName === 'GetBatteryLevel') {
         getBatteryLevel(intent, session, callback);
-    }else if (intentName === 'AMAZON.HelpIntent') {
+    } else if (intentName === 'GetSpayedOrNeutered') {
+        getSpayedOrNeutered(intent, session, callback);
+    } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         handleSessionEndRequest(callback);

@@ -25,9 +25,22 @@ GetDogActivity What they did {Date}
 
 GetBatteryLevel What is your collars battery level
 GetBatteryLevel What is your battery at
+GetBatteryLevel What is your battery percentage
 GetBatteryLevel Is your battery running low
 GetBatteryLevel Is your collar running low
-GetBatteryLevel What is your battery percentage
 GetBatteryLevel Does your battery need charging
 GetBatteryLevel Does your collar need charging
 GetBatteryLevel How is your battery level
+
+GetSpayedOrNeutered Are you neutered
+GetSpayedOrNeutered Are you spayed
+GetSpayedOrNeutered Are you spayed or neutered
+GetSpayedOrNeutered Are you fixed
+GetSpayedOrNeutered Have you been neutered
+GetSpayedOrNeutered Have you been spayed
+GetSpayedOrNeutered Have you been spayed or neutered
+GetSpayedOrNeutered Have you been fixed
+GetSpayedOrNeutered Were you neutered
+GetSpayedOrNeutered Were you spayed
+GetSpayedOrNeutered Were you spayed or neutered
+GetSpayedOrNeutered Were you fixed

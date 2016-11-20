@@ -28,6 +28,9 @@
       "intent": "GetBatteryLevel"
     }, 
     {
+      "intent": "GetSpayedOrNeutered"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }, 
     {
