@@ -65,9 +65,8 @@ function getDogMedicalConditions(intent, session, callback) {
     if(dog.medical_conditions.length > 0){
         speechOutput = `${dog.name} says: bark I am ${dog.medical_conditions[0].name}.`;
     }else{
-
+        speechOutput = `${dog.name} says: nope, I do not have any medical conditions.`;
     }
-    speechOutput = `${dog.name} says: bark I am ${dog.medical_conditions[0].name}.`;
 
     callback(sessionAttributes,
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
