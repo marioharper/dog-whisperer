@@ -114,6 +114,20 @@ function getDogActivity(intent, session, callback) {
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
+function getDogWeight(intent, session, callback) {
+    const cardTitle = intent.name;
+    const dog = getDogFromSession(intent, session, callback);
+    const activityDateSlot = intent.slots.Date;
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+
+    speechOutput = `${dog.name} says: bark bark I weigh ${dog.weight} ${dog.weight_unit}!`;
+    
+    callback(sessionAttributes,
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
 
 function getSpayedOrNeutered(intent, session, callback) {
     const cardTitle = intent.name;
@@ -241,6 +255,8 @@ function onIntent(intentRequest, session, callback) {
         getBatteryLevel(intent, session, callback);
     } else if (intentName === 'GetSpayedOrNeutered') {
         getSpayedOrNeutered(intent, session, callback);
+    } else if (intentName === 'GetDogWeight') {
+        getDogWeight(intent, session, callback);
     } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {

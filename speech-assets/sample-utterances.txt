@@ -44,3 +44,7 @@ GetSpayedOrNeutered Were you neutered
 GetSpayedOrNeutered Were you spayed
 GetSpayedOrNeutered Were you spayed or neutered
 GetSpayedOrNeutered Were you fixed
+
+GetDogWeight How much do you weigh
+GetDogWeight What is your weight
+GetDogWeight What's your weight
