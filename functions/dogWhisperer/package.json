@@ -9,6 +9,6 @@
   "author": "Mario Harper",
   "license": "ISC",
   "dependencies": {
-    "fitbark-node-client": "^1.0.2"
+    "fitbark-node-client": "^1.0.4"
   }
 }

@@ -40,6 +40,33 @@
       "intent": "GetDogGender"
     },
     {
+      "intent": "GetDogRestActivity",
+      "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "GetDogPlayActivity",
+      "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "GetDogActiveActivity",
+      "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }, 
     {

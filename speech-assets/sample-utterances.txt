@@ -18,11 +18,6 @@ GetDogBreed What's their breed
 GetDogBreed What's the breed
 GetDogBreed What's your breed
 
-GetDogActivity What did you do {Date}
-GetDogActivity What he did {Date}
-GetDogActivity What she did {Date}
-GetDogActivity What they did {Date}
-
 GetBatteryLevel What is your collars battery level
 GetBatteryLevel What is your battery at
 GetBatteryLevel What is your battery percentage
@@ -64,3 +59,27 @@ GetDogGender Are you a male
 GetDogGender Are you a female
 GetDogGender What is your gender
 GetDogGender What is your sex
+
+GetDogActivity What did you do {Date}
+GetDogActivity What he did {Date}
+GetDogActivity What she did {Date}
+GetDogActivity What they did {Date}
+
+GetDogRestActivity How did you sleep {Date}
+GetDogRestActivity How much did you sleep {Date}
+GetDogRestActivity How long did you sleep {Date}
+GetDogRestActivity How much did you rest {Date}
+GetDogRestActivity How long did you rest {Date}
+GetDogRestActivity Did you sleep {Date}
+GetDogRestActivity How was your sleep {Date}
+GetDogRestActivity How did you rest {Date}
+GetDogRestActivity Did you nap {Date}
+GetDogRestActivity Were you lazy {Date}
+GetDogRestActivity Did you lay around {Date}
+GetDogRestActivity Were you tired {Date}
+
+GetDogPlayActivity Did you play {Date}
+GetDogPlayActivity Did you go for a run {Date}
+GetDogPlayActivity Did you have a lot of fun {Date}
+GetDogPlayActivity How much did you play {Date}
+GetDogPlayActivity How long did you play {Date}
