@@ -111,7 +111,7 @@ function getDogActivity(intent, session, callback) {
     if (dog && activityDateSlot) {
         const activityDate = activityDateSlot.value;
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function(activities){
-            speechOutput = `${dog.name} says: I played for ${activities[0].min_play} minutes, was active for ${activities[0].min_active} minutes, and slept for ${activities[0].min_rest} minutes.`;
+            speechOutput = `${dog.name} says: I played for ${helpers.minutesToString(activities[0].min_play)}, was active for ${helpers.minutesToString(activities[0].min_active)}, and slept for ${helpers.minutesToString(activities[0].min_rest)}.`;
             callback(sessionAttributes,
                 helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         }).catch(function(err){
@@ -216,13 +216,13 @@ function getDogRestActivity(intent, session, callback) {
     if (dog && activityDateSlot) {
         const activityDate = activityDateSlot.value;
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function(activities){
-            speechOutput = `${dog.name} says: I slept for ${activities[0].min_rest} minutes.`;
+            speechOutput = `${dog.name} says: I slept for ${helpers.minutesToString(activities[0].min_rest)}.`;
 
             callback(sessionAttributes,
                 helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         }).catch(function(err){
             speechOutput = `Sorry, had trouble communicating with ${dog.name} about that.`;
-
+            console.log(intent, err);
             callback(sessionAttributes,
                  helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         });
@@ -241,13 +241,13 @@ function getDogPlayActivity(intent, session, callback) {
     if (dog && activityDateSlot) {
         const activityDate = activityDateSlot.value;
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function(activities){
-            speechOutput = `${dog.name} says: I played for ${activities[0].min_play} minutes.`;
+            speechOutput = `${dog.name} says: I played for ${helpers.minutesToString(activities[0].min_play)}.`;
 
             callback(sessionAttributes,
                 helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         }).catch(function(err){
             speechOutput = `Sorry, had trouble communicating with ${dog.name} about that.`;
-
+            console.log(intent, err);
             callback(sessionAttributes,
                  helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         });
@@ -266,13 +266,13 @@ function getDogActiveActivity(intent, session, callback) {
     if (dog && activityDateSlot) {
         const activityDate = activityDateSlot.value;
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function(activities){
-            speechOutput = `${dog.name} says: I was active for ${activities[0].min_active} minutes.`;
+            speechOutput = `${dog.name} says: I was active for ${helpers.minutesToString(activities[0].min_active)}.`;
 
             callback(sessionAttributes,
                 helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         }).catch(function(err){
             speechOutput = `Sorry, had trouble communicating with ${dog.name} about that.`;
-
+            console.log(intent, err);
             callback(sessionAttributes,
                  helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         });

@@ -1,13 +1,26 @@
 module.exports = {
   buildSpeechletResponse: buildSpeechletResponse,
   buildResponse: buildResponse,
-  calculateAge: calculateAge
+  calculateAge: calculateAge,
+  minutesToString: minutesToString
 }
 
 function calculateAge(birthday){
     var ageDifMs = Date.now() - birthday.getTime();
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+function minutesToString(minutes){
+    var hours = Math.floor( minutes / 60);          
+    var minutes = minutes % 60;
+    var message = `${minutes} minutes`
+
+    if (hours !== 0){
+        message = `${hours} hours and ${message}`
+    }
+
+    return message;
 }
 
 function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
