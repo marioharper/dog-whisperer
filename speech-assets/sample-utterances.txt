@@ -19,8 +19,11 @@ GetDogBreed What's the breed
 GetDogBreed What's your breed
 
 GetBatteryLevel What is your collars battery level
+GetBatteryLevel What's your collars battery level
 GetBatteryLevel What is your battery at
+GetBatteryLevel What's your battery at
 GetBatteryLevel What is your battery percentage
+GetBatteryLevel What's your battery percentage
 GetBatteryLevel Is your battery running low
 GetBatteryLevel Is your collar running low
 GetBatteryLevel Does your battery need charging
@@ -45,12 +48,14 @@ GetDogWeight What is your weight
 GetDogWeight What's your weight
 
 GetDogBirthday When is your birthday
+GetDogBirthday When's your birthday
 GetDogBirthday Is it your birthday
 GetDogBirthday What day is your birthday
 GetDogBirthday When were you born
 GetDogBirthday Is today your birthday
 GetDogBirthday Is tomorrow your birthday
 GetDogBirthday What is the date of your birthday
+GetDogBirthday What's the date of your birthday
 
 GetDogGender Are you a boy or a girl
 GetDogGender Are you a boy
@@ -58,7 +63,9 @@ GetDogGender Are you a girl
 GetDogGender Are you a male
 GetDogGender Are you a female
 GetDogGender What is your gender
+GetDogGender What's your gender
 GetDogGender What is your sex
+GetDogGender What's your sex
 
 GetDogActivity What did you do {Date}
 GetDogActivity What he did {Date}
