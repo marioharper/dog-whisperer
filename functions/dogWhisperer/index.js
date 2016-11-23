@@ -194,7 +194,9 @@ function getDogAge(intent, session, callback) {
     let ageString;
 
     // under one year old, say months
-    if(ageMonths < 12){
+    if(ageMonths === 1){
+        ageString = `${ageMonths%12} month`
+    } else if (ageMonths < 12){
         ageString = `${ageMonths%12} months`
     } else if (ageMonths < 24) {
         ageString = `${Math.floor(ageMonths/12)} year`
