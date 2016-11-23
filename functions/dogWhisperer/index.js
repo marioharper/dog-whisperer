@@ -174,10 +174,35 @@ function getDogBirthday(intent, session, callback) {
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
-    const age = helpers.calculateAge(new Date(dog.birth));
+    const age = helpers.yearDiff(new Date(dog.birth), new Date());
 
 
     speechOutput = `${dog.name} says: bark bark my birthday is ${dog.birth}. I will be turning ${age + 1}. What are you getting me?`;
+
+    callback(sessionAttributes,
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
+function getDogAge(intent, session, callback) {
+    const cardTitle = intent.name;
+    const dog = getDogFromSession(intent, session, callback);
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+    const ageMonths = helpers.monthDiff(new Date(dog.birth), new Date());
+    let ageString;
+
+    // under one year old, say months
+    if(ageMonths < 12){
+        ageString = `${ageMonths%12} months`
+    } else if (ageMonths < 24) {
+        ageString = `${Math.floor(ageMonths/12)} year`
+    } else {
+        ageString = `${Math.floor(ageMonths/12)} years`
+    }
+
+    speechOutput = `${dog.name} says: I am ${ageString} old.`;
 
     callback(sessionAttributes,
         helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -380,6 +405,8 @@ function onIntent(intentRequest, session, callback) {
         getDogWeight(intent, session, callback);
     } else if (intentName === 'GetDogBirthday') {
         getDogBirthday(intent, session, callback);
+    } else if (intentName === 'GetDogAge') {
+        getDogAge(intent, session, callback);
     } else if (intentName === 'GetDogGender') {
         getDogGender(intent, session, callback);
     } else if (intentName === 'GetDogRestActivity') {

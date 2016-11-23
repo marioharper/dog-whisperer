@@ -37,6 +37,9 @@
       "intent": "GetDogBirthday"
     },
     {
+      "intent": "GetDogAge"
+    },
+    {
       "intent": "GetDogGender"
     },
     {

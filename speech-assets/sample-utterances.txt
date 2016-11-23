@@ -7,16 +7,10 @@ GetDogMedicalConditions Are you sick
 GetDogMedicalConditions Do you have any problems 
 GetDogMedicalConditions What are your illnesses  
 
-GetDogBreed What is his breed
-GetDogBreed What is her breed
-GetDogBreed What is their breed
-GetDogBreed What is the breed
 GetDogBreed What is your breed
-GetDogBreed What's his breed
-GetDogBreed What's her breed
-GetDogBreed What's their breed
-GetDogBreed What's the breed
 GetDogBreed What's your breed
+GetDogBreed What type of dog are you
+GetDogBreed What kind of dog are you
 
 GetBatteryLevel What is your collars battery level
 GetBatteryLevel What's your collars battery level
@@ -56,6 +50,10 @@ GetDogBirthday Is today your birthday
 GetDogBirthday Is tomorrow your birthday
 GetDogBirthday What is the date of your birthday
 GetDogBirthday What's the date of your birthday
+
+GetDogAge How old are you
+GetDogAge What is your age
+GetDogAge What's your age
 
 GetDogGender Are you a boy or a girl
 GetDogGender Are you a boy
