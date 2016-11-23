@@ -10,44 +10,92 @@
       ]
     },
     {
-      "intent": "GetDogBreed"
+      "intent": "GetDogBreed",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
     },
     {
-      "intent": "GetDogMedicalConditions"
+      "intent": "GetDogMedicalConditions",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
     },
     {
       "intent": "GetDogActivity",
       "slots": [
         {
-          "name": "Date",
-          "type": "AMAZON.DATE"
+          "name": "Dog",
+          "type": "DOG_NAMES"
         }
       ]
     }, 
     {
-      "intent": "GetBatteryLevel"
+      "intent": "GetBatteryLevel",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
     }, 
     {
-      "intent": "GetSpayedOrNeutered"
+      "intent": "GetSpayedOrNeutered",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
     },
     {
-      "intent": "GetDogWeight"
+      "intent": "GetDogWeight",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
     },
     {
-      "intent": "GetDogBirthday"
+      "intent": "GetDogBirthday",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
     },
     {
-      "intent": "GetDogAge"
+      "intent": "GetDogAge",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
     },
     {
-      "intent": "GetDogGender"
+      "intent": "GetDogGender",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
     },
     {
       "intent": "GetDogRestActivity",
       "slots": [
         {
-          "name": "Date",
-          "type": "AMAZON.DATE"
+          "name": "Dog",
+          "type": "DOG_NAMES"
         }
       ]
     },
@@ -55,8 +103,8 @@
       "intent": "GetDogPlayActivity",
       "slots": [
         {
-          "name": "Date",
-          "type": "AMAZON.DATE"
+          "name": "Dog",
+          "type": "DOG_NAMES"
         }
       ]
     },
@@ -64,8 +112,8 @@
       "intent": "GetDogActiveActivity",
       "slots": [
         {
-          "name": "Date",
-          "type": "AMAZON.DATE"
+          "name": "Dog",
+          "type": "DOG_NAMES"
         }
       ]
     },
