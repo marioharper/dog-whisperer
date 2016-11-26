@@ -1,6 +1,6 @@
 'use strict';
 
-var dogWhisperer = require('./dogWhisperer');
+var DogWhisperer = require('./dogWhisperer');
 
 // --------------- Main handler -----------------------
 
@@ -53,7 +53,7 @@ function onSessionStarted(sessionStartedRequest, session) {
  */
 function onLaunch(launchRequest, session, callback) {
     console.log(`onLaunch requestId=${launchRequest.requestId}, sessionId=${session.sessionId}`);
-    // skill launch
+    const dogWhisperer = new DogWhisperer();
     dogWhisperer.getWelcomeResponse(callback);
 }
 
@@ -62,6 +62,30 @@ function onIntent(intentRequest, session, callback) {
 
     const intent = intentRequest.intent;
     const intentName = intentRequest.intent.name;
+    let dogWhisperer;
+
+    // check for FITBARK account
+    const accessToken = session.user.accessToken;
+    if(!accessToken){ // no access token
+        const linkAccountResponseJSON = {
+            "version": "1.0",
+            "response": {
+            "outputSpeech": {
+                "type": "PlainText",
+                "text": "You must have a FitBark account to use this skill. Please use the Alexa app to link your Amazon account with your FitBark Account."
+            },
+            "card": {
+                "type": "LinkAccount"
+            },
+            "shouldEndSession": true
+            }
+        };
+    
+        callback(session.attributes, linkAccountResponseJSON);
+    }else {
+        // use access token as FitBark API key
+        dogWhisperer = new DogWhisperer(accessToken);
+    }
 
     if (intentName === 'SetDogName') {
         dogWhisperer.setDogInSession(intent, session, callback);
