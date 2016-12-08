@@ -11,12 +11,12 @@ GetDogBreed What is your breed
 GetDogBreed What's your breed
 GetDogBreed What type of dog are you
 GetDogBreed What kind of dog are you
-GetDogBreed What is {Dog} breed
-GetDogBreed What's {Dog} breed
-GetDogBreed What {Dog} breed is
-GetDogBreed What type of dog {Dog} is
-GetDogBreed What kind of dog {Dog} is
-GetDogBreed What kind of dog is {Dog}
+OneshotGetDogBreed What is {Dog} breed
+OneshotGetDogBreed What's {Dog} breed
+OneshotGetDogBreed What {Dog} breed is
+OneshotGetDogBreed What type of dog {Dog} is
+OneshotGetDogBreed What kind of dog {Dog} is
+OneshotGetDogBreed What kind of dog is {Dog}
 
 
 GetBatteryLevel What is your collars battery level

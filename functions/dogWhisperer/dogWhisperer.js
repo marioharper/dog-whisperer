@@ -5,7 +5,7 @@ var dateUtil = require('./utils/dateUtil');
 
 module.exports = DogWhisperer;
 
-function DogWhisperer (apiToken) {
+function DogWhisperer(apiToken) {
     this.fitBark = new FitBark(apiToken);
 }
 
@@ -36,13 +36,54 @@ DogWhisperer.prototype.handleSessionEndRequest = function (intent, session, call
     callback({}, _buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
 };
 
+DogWhisperer.prototype.oneshotGetDogBreed = function (intent, session, callback) {
+    const cardTitle = intent.name;
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = true;
+    let speechOutput = '';
+
+    const dogNameSlot = intent.slots.Dog;
+
+    if (dogNameSlot) {
+        const dogName = _formatDogName(dogNameSlot.value);
+
+        this.fitBark.getDog(dogName).then((dog) => {
+            if (dog) {
+                let breed = `a ${dog.breed1.name}`;
+
+                if (dog.breed2.name) {
+                    breed = `part ${dog.breed1.name} and part ${dog.breed2.name}`
+                }
+
+                speechOutput = `${dog.name} says: bark bark I am ${breed}.`;
+            } else {
+                speechOutput = `I did not recognize ${dogName} as a dog related to you. Please try talking to a dog you are related to.`;
+            }
+
+            callback(sessionAttributes,
+                _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        }).catch((err) => {
+            speechOutput = `Sorry, having a little trouble talking to ${dogName} at the moment.`;
+            callback(sessionAttributes,
+                _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        });
+
+    } else {
+        speechOutput = "I did not catch which dog you wanted me to talk to.";
+        callback(sessionAttributes,
+            _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+    }
+};
+
 DogWhisperer.prototype.getDogBreed = function (intent, session, callback) {
     const cardTitle = intent.name;
-    const dog = _getDogFromSession(intent, session, callback);
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
+    const dog = _getDogFromSession(intent, session, callback);
+
     let breed = `a ${dog.breed1.name}`;
 
     if (dog.breed2.name) {
@@ -302,7 +343,7 @@ DogWhisperer.prototype.getDogActiveActivity = function (intent, session, callbac
     }
 };
 
-DogWhisperer.prototype.setDogInSession = function (intent, session, callback) {
+DogWhisperer.prototype.setDogName = function (intent, session, callback) {
     const cardTitle = intent.name;
     const dogNameSlot = intent.slots.Dog;
     let repromptText = '';
@@ -358,11 +399,14 @@ function _getDogFromSession(intent, session, callback) {
     }
 }
 
-
 function _createSessionAttributes(dog) {
     return {
         dog,
     };
+}
+
+function _formatDogName(dogName){
+    return dogName.replace("'s", "");
 }
 
 function _buildSpeechletResponse(title, output, repromptText, shouldEndSession) {

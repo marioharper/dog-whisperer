@@ -88,11 +88,13 @@ function onIntent(intentRequest, session, callback) {
     }
 
     if (intentName === 'SetDogName') {
-        dogWhisperer.setDogInSession(intent, session, callback);
+        dogWhisperer.setDogName(intent, session, callback);
     } else if (intentName === 'GetDogMedicalConditions') {
         dogWhisperer.getDogMedicalConditions(intent, session, callback);
     } else if (intentName === 'GetDogBreed') {
         dogWhisperer.getDogBreed(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogBreed') {
+        dogWhisperer.oneshotGetDogBreed(intent, session, callback);
     } else if (intentName === 'GetDogActivity') {
         dogWhisperer.getDogActivity(intent, session, callback);
     } else if (intentName === 'GetBatteryLevel') {

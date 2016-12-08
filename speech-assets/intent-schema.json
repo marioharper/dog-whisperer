@@ -10,7 +10,10 @@
       ]
     },
     {
-      "intent": "GetDogBreed",
+      "intent": "GetDogBreed"
+    },
+    {
+      "intent": "OneshotGetDogBreed",
       "slots": [
         {
           "name": "Dog",
@@ -33,9 +36,13 @@
         {
           "name": "Dog",
           "type": "DOG_NAMES"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
         }
       ]
-    }, 
+    },
     {
       "intent": "GetBatteryLevel",
       "slots": [
@@ -44,7 +51,7 @@
           "type": "DOG_NAMES"
         }
       ]
-    }, 
+    },
     {
       "intent": "GetSpayedOrNeutered",
       "slots": [
@@ -96,6 +103,10 @@
         {
           "name": "Dog",
           "type": "DOG_NAMES"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
         }
       ]
     },
@@ -105,6 +116,10 @@
         {
           "name": "Dog",
           "type": "DOG_NAMES"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
         }
       ]
     },
@@ -114,15 +129,19 @@
         {
           "name": "Dog",
           "type": "DOG_NAMES"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
         }
       ]
     },
     {
       "intent": "AMAZON.HelpIntent"
-    }, 
+    },
     {
       "intent": "AMAZON.StopIntent"
-    }, 
+    },
     {
       "intent": "AMAZON.CancelIntent"
     }
