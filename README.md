@@ -1,1 +1,2 @@
-# alexa-skill-dog-whisperer
+# Dog Whisperer for Amazon Alexa
+![Dog Whisperer Logo](logo/dog-whisperer.png)
