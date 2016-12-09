@@ -22,7 +22,10 @@
       ]
     },
     {
-      "intent": "GetDogMedicalConditions",
+      "intent": "GetDogMedicalConditions"
+    },
+    {
+      "intent": "OneshotGetDogMedicalConditions",
       "slots": [
         {
           "name": "Dog",

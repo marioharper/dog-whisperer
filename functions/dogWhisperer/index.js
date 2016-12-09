@@ -1,6 +1,7 @@
 'use strict';
 
-var DogWhisperer = require('./dogWhisperer');
+var oneshot = require('./oneshotRequests');
+var conversation = require('./conversationRequests');
 
 // --------------- Main handler -----------------------
 
@@ -54,7 +55,7 @@ function onSessionStarted(sessionStartedRequest, session) {
 function onLaunch(launchRequest, session, callback) {
     console.log(`onLaunch requestId=${launchRequest.requestId}, sessionId=${session.sessionId}`);
     const dogWhisperer = new DogWhisperer();
-    dogWhisperer.getWelcomeResponse(callback);
+    getWelcomeResponse(callback);
 }
 
 function onIntent(intentRequest, session, callback) {
@@ -62,40 +63,41 @@ function onIntent(intentRequest, session, callback) {
 
     const intent = intentRequest.intent;
     const intentName = intentRequest.intent.name;
-    let dogWhisperer = new DogWhisperer();
 
     if (intentName === 'SetDogName') {
-        dogWhisperer.setDogName(intent, session, callback);
+        conversation.setDogName(intent, session, callback);
     } else if (intentName === 'GetDogMedicalConditions') {
-        dogWhisperer.getDogMedicalConditions(intent, session, callback);
+        conversation.getDogMedicalConditions(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogMedicalConditions') {
+        oneshot.getDogMedicalConditions(intent, session, callback);
     } else if (intentName === 'GetDogBreed') {
-        dogWhisperer.getDogBreed(intent, session, callback);
+        conversation.getDogBreed(intent, session, callback);
     } else if (intentName === 'OneshotGetDogBreed') {
-        dogWhisperer.oneshotGetDogBreed(intent, session, callback);
+        oneshot.getDogBreed(intent, session, callback);
     } else if (intentName === 'GetDogActivity') {
-        dogWhisperer.getDogActivity(intent, session, callback);
+        conversation.getDogActivity(intent, session, callback);
     } else if (intentName === 'GetBatteryLevel') {
-        dogWhisperer.getBatteryLevel(intent, session, callback);
+        conversation.getBatteryLevel(intent, session, callback);
     } else if (intentName === 'GetSpayedOrNeutered') {
-        dogWhisperer.getSpayedOrNeutered(intent, session, callback);
+        conversation.getSpayedOrNeutered(intent, session, callback);
     } else if (intentName === 'GetDogWeight') {
-        dogWhisperer.getDogWeight(intent, session, callback);
+        conversation.getDogWeight(intent, session, callback);
     } else if (intentName === 'GetDogBirthday') {
-        dogWhisperer.getDogBirthday(intent, session, callback);
+        conversation.getDogBirthday(intent, session, callback);
     } else if (intentName === 'GetDogAge') {
-        dogWhisperer.getDogAge(intent, session, callback);
+        conversation.getDogAge(intent, session, callback);
     } else if (intentName === 'GetDogGender') {
-        dogWhisperer.getDogGender(intent, session, callback);
+        conversation.getDogGender(intent, session, callback);
     } else if (intentName === 'GetDogRestActivity') {
-        dogWhisperer.getDogRestActivity(intent, session, callback);
+        conversation.getDogRestActivity(intent, session, callback);
     } else if (intentName === 'GetDogPlayActivity') {
-        dogWhisperer.getDogPlayActivity(intent, session, callback);
+        conversation.getDogPlayActivity(intent, session, callback);
     } else if (intentName === 'GetDogActiveActivity') {
-        dogWhisperer.getDogActiveActivity(intent, session, callback);
+        conversation.getDogActiveActivity(intent, session, callback);
     } else if (intentName === 'AMAZON.HelpIntent') {
-        dogWhisperer.getWelcomeResponse(callback);
+        getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
-        dogWhisperer.handleSessionEndRequest(intent, session, callback);
+        handleSessionEndRequest(intent, session, callback);
     } else {
         throw new Error('Invalid intent');
     }
@@ -115,4 +117,27 @@ function buildResponse(sessionAttributes, speechletResponse) {
         response: speechletResponse
     };
 }
+
+function getWelcomeResponse(callback) {
+    const sessionAttributes = {};
+    const cardTitle = 'Welcome';
+    const speechOutput = 'Welcome to the Alexa Dog Whisperer skill. ' +
+        'Please tell me which of your dogs you would like to talk to by saying, talk to Max';
+    const repromptText = 'Please tell which dog to talk to by saying, ' +
+        'talk to Charlie';
+    const shouldEndSession = false;
+
+    callback(sessionAttributes,
+        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+};
+
+function handleSessionEndRequest(intent, session, callback) {
+    const cardTitle = 'Session Ended';
+    let speechOutput = 'Closing Dog Whisperer';
+    const shouldEndSession = true;
+
+    callback({}, _buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
+};
+
+
 

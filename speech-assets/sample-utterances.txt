@@ -6,6 +6,12 @@ GetDogMedicalConditions Do you have any sicknesses
 GetDogMedicalConditions Are you sick 
 GetDogMedicalConditions Do you have any problems 
 GetDogMedicalConditions What are your illnesses  
+OneshotGetDogMedicalConditions If {Dog} has any illnesses
+OneshotGetDogMedicalConditions What {Dog} illnesses are
+OneshotGetDogMedicalConditions If {Dog} has any sicknesses
+OneshotGetDogMedicalConditions What {Dog} sicknesses are
+OneshotGetDogMedicalConditions If {Dog} sick
+OneshotGetDogMedicalConditions If {Dog} has any problems
 
 GetDogBreed What is your breed
 GetDogBreed What's your breed
@@ -17,7 +23,6 @@ OneshotGetDogBreed What {Dog} breed is
 OneshotGetDogBreed What type of dog {Dog} is
 OneshotGetDogBreed What kind of dog {Dog} is
 OneshotGetDogBreed What kind of dog is {Dog}
-
 
 GetBatteryLevel What is your collars battery level
 GetBatteryLevel What's your collars battery level
