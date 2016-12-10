@@ -21,6 +21,8 @@ module.exports = {
     activeActivity
 };
 
+//////////////////////////////////
+
 function breed(dog) {
     let breed = `a ${dog.breed1.name}`;
 
@@ -35,7 +37,18 @@ function medicalConditions(dog) {
     let response = '';
 
     if (dog.medical_conditions.length > 0) {
-        response = `I am ${dog.medical_conditions[0].name}`;
+        response = `I `
+        dog.medical_conditions.forEach((condition, i) => {
+            if(condition.name.toUpperCase() === "OVERWEIGHT"){
+                response += `am ${condition.name} `;
+            } else {
+                response += `have ${condition.name} `;
+            }
+
+            if(dog.medical_conditions.length > 1 && i < dog.medical_conditions.length - 1){
+                response += 'and ';
+            }
+        });
     } else {
         response = `Nope, I do not have any medical conditions`;
     }

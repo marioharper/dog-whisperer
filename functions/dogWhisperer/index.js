@@ -121,8 +121,8 @@ function buildResponse(sessionAttributes, speechletResponse) {
 function getWelcomeResponse(callback) {
     const sessionAttributes = {};
     const cardTitle = 'Welcome';
-    const speechOutput = 'Welcome to the Alexa Dog Whisperer skill. ' +
-        'Please tell me which of your dogs you would like to talk to by saying, talk to Max';
+    const speechOutput = 'Hello, I am the Dog Whisperer. Start a conversation with your dog by saying, ' +
+        'talk to Max. Or you can ask me a single question like, what did Max do today?';
     const repromptText = 'Please tell which dog to talk to by saying, ' +
         'talk to Charlie';
     const shouldEndSession = false;

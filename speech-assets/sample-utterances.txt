@@ -35,6 +35,17 @@ GetBatteryLevel Is your collar running low
 GetBatteryLevel Does your battery need charging
 GetBatteryLevel Does your collar need charging
 GetBatteryLevel How is your battery level
+OneshotGetBatteryLevel What is {Dog} collars battery level
+OneshotGetBatteryLevel What's {Dog} collars battery level
+OneshotGetBatteryLevel What is {Dog} battery at
+OneshotGetBatteryLevel What's {Dog} battery at
+OneshotGetBatteryLevel What is {Dog} battery percentage
+OneshotGetBatteryLevel What's {Dog} battery percentage
+OneshotGetBatteryLevel Is {Dog} battery running low
+OneshotGetBatteryLevel Is {Dog} collar running low
+OneshotGetBatteryLevel Does {Dog} battery need charging
+OneshotGetBatteryLevel Does {Dog} collar need charging
+OneshotGetBatteryLevel How is {Dog} battery level
 
 GetSpayedOrNeutered Are you neutered
 GetSpayedOrNeutered Are you spayed

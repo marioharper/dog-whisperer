@@ -1,5 +1,11 @@
 'use strict';
 
+/*
+    This module handles all one-shot requests. All functions assume all
+    variables necessary to handle the request are provided in the intent.
+    They only pull the FitBark access token from the session.
+*/
+
 var FitBark = require('fitbark-node-client');
 var dogResponses = require('./dogResponses');
 

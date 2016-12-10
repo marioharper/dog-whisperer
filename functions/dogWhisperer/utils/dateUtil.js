@@ -1,11 +1,17 @@
 'use strict';
 
+/*
+    This module provides date utility functions.
+*/
+
 module.exports = {
     yearDiff,
     monthDiff,
     minutesToString,
     utcToDogLocal
-}
+};
+
+//////////////////////////////
 
 function yearDiff(d1, d2){
     var difMs = d2.getTime() - d1.getTime();

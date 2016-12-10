@@ -1,5 +1,11 @@
 'use strict';
 
+/*
+    This module handles all session based requests. All functions assume
+    they are in the context of an ongoing conversation. Thus, the dog in question 
+    is retrieved/set in the session. 
+*/
+
 var FitBark = require('fitbark-node-client');
 var dogResponses = require('./dogResponses');
 var dateUtil = require('./utils/dateUtil');
@@ -239,12 +245,13 @@ function getDogActivity(intent, session, callback) {
 function getDogRestActivity(intent, session, callback) {
     const fitBark = new FitBark(_getAccessToken(session, callback));
     const cardTitle = intent.name;
-    const dog = _getDogFromSession(session);
     const activityDateSlot = intent.slots.Date;
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
+
+    const dog = _getDogFromSession(session);
 
     if (dog && activityDateSlot) {
         const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
@@ -264,12 +271,13 @@ function getDogRestActivity(intent, session, callback) {
 function getDogPlayActivity(intent, session, callback) {
     const fitBark = new FitBark(_getAccessToken(session, callback));
     const cardTitle = intent.name;
-    const dog = _getDogFromSession(session);
     const activityDateSlot = intent.slots.Date;
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
+
+    const dog = _getDogFromSession(session);
 
     if (dog && activityDateSlot) {
         const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
@@ -291,12 +299,13 @@ function getDogPlayActivity(intent, session, callback) {
 function getDogActiveActivity(intent, session, callback) {
     const fitBark = new FitBark(_getAccessToken(session, callback));
     const cardTitle = intent.name;
-    const dog = _getDogFromSession(session);
     const activityDateSlot = intent.slots.Date;
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = false;
     let speechOutput = '';
+
+    const dog = _getDogFromSession(session);
 
     if (dog && activityDateSlot) {
         const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
@@ -313,7 +322,6 @@ function getDogActiveActivity(intent, session, callback) {
         });
     }
 };
-
 
 function _getAccessToken(session, callback) {
     // check for FITBARK account
