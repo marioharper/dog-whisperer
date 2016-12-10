@@ -79,9 +79,9 @@ function spayedOrNeutered(dog) {
     }
 
     if (!dog.neutered) {
-        response = `${dog.name} says: woof woof no, I am not ${spayedOrNeutered}.`;
+        response = `No, I am not ${spayedOrNeutered}.`;
     } else {
-        response = `${dog.name} says: woof woof I am a ${gender} dog so I am ${spayedOrNeutered}.`;
+        response = `Yes, I am ${spayedOrNeutered}.`;
     }
 
     return response;
