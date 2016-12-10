@@ -126,10 +126,10 @@ function restActivity(activities) {
     return `I slept for ${dateUtil.minutesToString(activities[0].min_rest)}`;
 }
 
-function playActivity(dog) {
+function playActivity(activities) {
     return `I played for ${dateUtil.minutesToString(activities[0].min_play)}`;
 }
 
-function activeActivity(dog) {
+function activeActivity(activities) {
     return `I was active for ${dateUtil.minutesToString(activities[0].min_active)}.`;
 }

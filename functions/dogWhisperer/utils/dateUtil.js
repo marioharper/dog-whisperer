@@ -3,7 +3,8 @@
 module.exports = {
     yearDiff,
     monthDiff,
-    minutesToString
+    minutesToString,
+    utcToDogLocal
 }
 
 function yearDiff(d1, d2){
@@ -30,4 +31,8 @@ function minutesToString(minutes){
     }
 
     return message;
+}
+
+function utcToDogLocal(utcDate, millisecondOffset){
+    return new Date(utcDate.getTime() + millisecondOffset).toISOString().split('T')[0];
 }

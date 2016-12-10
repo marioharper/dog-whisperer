@@ -2,6 +2,7 @@
 
 var FitBark = require('fitbark-node-client');
 var dogResponses = require('./dogResponses');
+var dateUtil = require('./utils/dateUtil');
 
 const CACHED_RESPONSES = {
     NO_DOG: "I didn't catch which dog you wanted me to talk to. Please tell me by saying talk to charlie."
@@ -221,8 +222,7 @@ function getDogActivity(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog && activityDateSlot) {
-        const activityDate = activityDateSlot.value;
-
+        let activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
             speechOutput = dogResponses.activity(activities);
             callback(sessionAttributes,
@@ -247,7 +247,7 @@ function getDogRestActivity(intent, session, callback) {
     let speechOutput = '';
 
     if (dog && activityDateSlot) {
-        const activityDate = activityDateSlot.value;
+        const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
             speechOutput = dogResponses.restActivity(activities);
             callback(sessionAttributes,
@@ -272,8 +272,9 @@ function getDogPlayActivity(intent, session, callback) {
     let speechOutput = '';
 
     if (dog && activityDateSlot) {
-        const activityDate = activityDateSlot.value;
+        const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
+            console.log('activities', activities);
             speechOutput = dogResponses.playActivity(activities);
 
             callback(sessionAttributes,
@@ -298,7 +299,7 @@ function getDogActiveActivity(intent, session, callback) {
     let speechOutput = '';
 
     if (dog && activityDateSlot) {
-        const activityDate = activityDateSlot.value;
+        const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
             speechOutput = dogResponses.activeActivity(activities);
 
