@@ -30,7 +30,7 @@ function breed(dog) {
         breed = `part ${dog.breed1.name} and part ${dog.breed2.name}`
     }
 
-    return `I am ${breed}`;
+    return _formateResponse(dog.name, `I am ${breed}`);
 }
 
 function medicalConditions(dog) {
@@ -53,7 +53,7 @@ function medicalConditions(dog) {
         response = `Nope, I do not have any medical conditions`;
     }
 
-    return response;
+    return _formatResponse(dog.name, response);
 }
 
 function batteryLevel(dog) {
@@ -67,15 +67,15 @@ function batteryLevel(dog) {
         recommendation = "needs to be charged"
     }
 
-    return `My battery is at ${dog.battery_level} percent. My FitBark ${recommendation}`;
+    return _formatResponse(dog.name, `My battery is at ${dog.battery_level} percent. My FitBark ${recommendation}`);
 }
 
 function activity(activities) {
-    return `I played for ${dateUtil.minutesToString(activities[0].min_play)}, was active for ${dateUtil.minutesToString(activities[0].min_active)}, and slept for ${dateUtil.minutesToString(activities[0].min_rest)}`;
+    return _formatResponse(dog.name, `I played for ${dateUtil.minutesToString(activities[0].min_play)}, was active for ${dateUtil.minutesToString(activities[0].min_active)}, and slept for ${dateUtil.minutesToString(activities[0].min_rest)}`);
 }
 
 function weight(dog) {
-    return `I weigh ${dog.weight} ${dog.weight_unit}`;
+    return _formatResponse(dog.name, `I weigh ${dog.weight} ${dog.weight_unit}`);
 }
 
 function spayedOrNeutered(dog) {
@@ -97,12 +97,12 @@ function spayedOrNeutered(dog) {
         response = `Yes, I am ${spayedOrNeutered}`;
     }
 
-    return response;
+    return _formatResponse(dog.name, response);
 }
 
 function birthday(dog) {
     const age = dateUtil.yearDiff(new Date(dog.birth), new Date());
-    return `My birthday is ${dog.birth}. I will be turning ${age + 1}`;
+    return _formatResposne(dog.name, `My birthday is ${dog.birth}. I will be turning ${age + 1}`);
 }
 
 function age(dog) {
@@ -120,7 +120,7 @@ function age(dog) {
         ageString = `${Math.floor(ageMonths / 12)} years`
     }
 
-    return `I am ${ageString} old`;
+    return _formatResponse(dog.name, `I am ${ageString} old`);
 }
 
 function gender(dog) {
@@ -132,17 +132,25 @@ function gender(dog) {
         gender = 'female';
     }
 
-    return `I am a ${gender} dog`;
+    return _formatResponse(dog.name, `I am a ${gender} dog`);
 }
 
-function restActivity(activities) {
-    return `I slept for ${dateUtil.minutesToString(activities[0].min_rest)}`;
+function activity(dog, activities) {
+    return _formatResponse(dog.name, `I played for ${dateUtil.minutesToString(activities[0].min_play)}, was active for ${dateUtil.minutesToString(activities[0].min_active)}, and slept for ${dateUtil.minutesToString(activities[0].min_rest)}`);
 }
 
-function playActivity(activities) {
-    return `I played for ${dateUtil.minutesToString(activities[0].min_play)}`;
+function restActivity(dog, activities) {
+    return _formatResponse(dog.name, `I slept for ${dateUtil.minutesToString(activities[0].min_rest)}`);
 }
 
-function activeActivity(activities) {
-    return `I was active for ${dateUtil.minutesToString(activities[0].min_active)}.`;
+function playActivity(dog, activities) {
+    return _formatResponse(dog.name, `I played for ${dateUtil.minutesToString(activities[0].min_play)}`);
+}
+
+function activeActivity(dog, activities) {
+    return _formatResponse(dog.name, `I was active for ${dateUtil.minutesToString(activities[0].min_active)}.`);
+}
+
+function _formatResponse(dogName, response){
+    return `${dogName} says: ${response}.`
 }

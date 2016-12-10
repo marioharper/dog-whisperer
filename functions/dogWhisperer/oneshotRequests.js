@@ -337,7 +337,7 @@ function getDogActivity(intent, session, callback) {
             if (dog && activityDateSlot) {
                 let activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset * 1000);
                 fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-                    speechOutput = dogResponses.activity(activities);
+                    speechOutput = dogResponses.activity(dog, activities);
                     console.log(activities);
                     callback(sessionAttributes,
                         _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -380,7 +380,7 @@ function getDogRestActivity(intent, session, callback) {
             if (dog && activityDateSlot) {
                 let activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset * 1000);
                 fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-                    speechOutput = dogResponses.restActivity(activities);
+                    speechOutput = dogResponses.restActivity(dog, activities);
                     callback(sessionAttributes,
                         _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
                 }).catch(function (err) {
@@ -421,7 +421,7 @@ function getDogPlayActivity(intent, session, callback) {
             if (dog && activityDateSlot) {
                 let activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset * 1000);
                 fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-                    speechOutput = dogResponses.playActivity(activities);
+                    speechOutput = dogResponses.playActivity(dog, activities);
                     callback(sessionAttributes,
                         _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
                 }).catch(function (err) {
@@ -462,7 +462,7 @@ function getDogActiveActivity(intent, session, callback) {
             if (dog && activityDateSlot) {
                 let activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset * 1000);
                 fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-                    speechOutput = dogResponses.activeActivity(activities);
+                    speechOutput = dogResponses.activeActivity(dog, activities);
                     callback(sessionAttributes,
                         _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
                 }).catch(function (err) {
