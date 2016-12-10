@@ -34,6 +34,78 @@
       ]
     },
     {
+      "intent": "GetBatteryLevel"
+    },
+    {
+      "intent": "OneshotGetBatteryLevel",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "GetSpayedOrNeutered"
+    },
+    {
+      "intent": "OneshotGetSpayedOrNeutered",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "GetDogWeight"
+    },
+    {
+      "intent": "OneshotGetDogWeight",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "GetDogBirthday"
+    },
+    {
+      "intent": "OneshotGetDogBirthday",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "GetDogAge"
+    },
+    {
+      "intent": "OneshotGetDogAge",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "GetDogGender"
+    },
+    {
+      "intent": "OneshotGetDogGender",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        }
+      ]
+    },
+    {
       "intent": "GetDogActivity",
       "slots": [
         {
@@ -43,26 +115,34 @@
       ]
     },
     {
-      "intent": "GetBatteryLevel"
-    },
-    {
-      "intent": "GetSpayedOrNeutered"
-    },
-    {
-      "intent": "GetDogWeight"
-    },
-    {
-      "intent": "GetDogBirthday"
-    },
-    {
-      "intent": "GetDogAge"
-    },
-    {
-      "intent": "GetDogGender"
+      "intent": "OneshotGetDogActivity",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
     },
     {
       "intent": "GetDogRestActivity",
       "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "OneshotGetDogRestActivity",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        },
         {
           "name": "Date",
           "type": "AMAZON.DATE"
@@ -79,8 +159,34 @@
       ]
     },
     {
+      "intent": "OneshotGetDogPlayActivity",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
       "intent": "GetDogActiveActivity",
       "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "OneshotGetDogActiveActivity",
+      "slots": [
+        {
+          "name": "Dog",
+          "type": "DOG_NAMES"
+        },
         {
           "name": "Date",
           "type": "AMAZON.DATE"

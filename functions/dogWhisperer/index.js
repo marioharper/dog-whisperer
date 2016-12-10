@@ -75,24 +75,44 @@ function onIntent(intentRequest, session, callback) {
         oneshot.getDogBreed(intent, session, callback);
     } else if (intentName === 'GetDogActivity') {
         conversation.getDogActivity(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogActivity') {
+        oneshot.getDogActivity(intent, session, callback);
     } else if (intentName === 'GetBatteryLevel') {
         conversation.getBatteryLevel(intent, session, callback);
+    } else if (intentName === 'OneshotGetBatteryLevel') {
+        oneshot.getBatteryLevel(intent, session, callback);
     } else if (intentName === 'GetSpayedOrNeutered') {
         conversation.getSpayedOrNeutered(intent, session, callback);
+    } else if (intentName === 'OneshotGetSpayedOrNeutered') {
+        oneshot.getSpayedOrNeutered(intent, session, callback);
     } else if (intentName === 'GetDogWeight') {
         conversation.getDogWeight(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogWeight') {
+        oneshot.getDogWeight(intent, session, callback);
     } else if (intentName === 'GetDogBirthday') {
         conversation.getDogBirthday(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogBirthday') {
+        oneshot.getDogBirthday(intent, session, callback);
     } else if (intentName === 'GetDogAge') {
         conversation.getDogAge(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogAge') {
+        oneshot.getDogAge(intent, session, callback);
     } else if (intentName === 'GetDogGender') {
         conversation.getDogGender(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogGender') {
+        oneshot.getDogGender(intent, session, callback);
     } else if (intentName === 'GetDogRestActivity') {
         conversation.getDogRestActivity(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogRestActivity') {
+        oneshot.getDogRestActivity(intent, session, callback);
     } else if (intentName === 'GetDogPlayActivity') {
         conversation.getDogPlayActivity(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogPlayActivity') {
+        oneshot.getDogPlayActivity(intent, session, callback);
     } else if (intentName === 'GetDogActiveActivity') {
         conversation.getDogActiveActivity(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogActiveActivity') {
+        oneshot.getDogActiveActivity(intent, session, callback);
     } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {

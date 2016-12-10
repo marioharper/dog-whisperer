@@ -59,10 +59,29 @@ GetSpayedOrNeutered Were you neutered
 GetSpayedOrNeutered Were you spayed
 GetSpayedOrNeutered Were you spayed or neutered
 GetSpayedOrNeutered Were you fixed
+OneshotGetSpayedOrNeutered Is {Dog} neutered
+OneshotGetSpayedOrNeutered Is {Dog} spayed
+OneshotGetSpayedOrNeutered Is {Dog} spayed or neutered
+OneshotGetSpayedOrNeutered Is {Dog} fixed
+OneshotGetSpayedOrNeutered Was {Dog} neutered
+OneshotGetSpayedOrNeutered Was {Dog} spayed
+OneshotGetSpayedOrNeutered Was {Dog} spayed or neutered
+OneshotGetSpayedOrNeutered Was {Dog} fixed
+OneshotGetSpayedOrNeutered Has {Dog} been neutered
+OneshotGetSpayedOrNeutered Has {Dog} been spayed
+OneshotGetSpayedOrNeutered Has {Dog} been spayed or neutered
+OneshotGetSpayedOrNeutered Has {Dog} been fixed
+OneshotGetSpayedOrNeutered Has {Dog} neutered
+OneshotGetSpayedOrNeutered Has {Dog} spayed
+OneshotGetSpayedOrNeutered Has {Dog} spayed or neutered
+OneshotGetSpayedOrNeutered Has {Dog} fixed
 
 GetDogWeight How much do you weigh
 GetDogWeight What is your weight
 GetDogWeight What's your weight
+OneshotGetDogWeight How much does {Dog} weigh
+OneshotGetDogWeight What is {Dog} weight
+OneshotGetDogWeight What's {Dog} weight
 
 GetDogBirthday When is your birthday
 GetDogBirthday When's your birthday
@@ -73,10 +92,22 @@ GetDogBirthday Is today your birthday
 GetDogBirthday Is tomorrow your birthday
 GetDogBirthday What is the date of your birthday
 GetDogBirthday What's the date of your birthday
+OneshotGetDogBirthday When is {Dog} birthday
+OneshotGetDogBirthday When's {Dog} birthday
+OneshotGetDogBirthday Is it {Dog} birthday
+OneshotGetDogBirthday What day is {Dog} birthday
+OneshotGetDogBirthday When was {Dog} born
+OneshotGetDogBirthday Is today {Dog} birthday
+OneshotGetDogBirthday Is tomorrow {Dog} birthday
+OneshotGetDogBirthday What is the date of {Dog} birthday
+OneshotGetDogBirthday What's the date of {Dog} birthday
 
 GetDogAge How old are you
 GetDogAge What is your age
 GetDogAge What's your age
+OneshotGetDogAge How old is {Dog}
+OneshotGetDogAge What is {Dog} age
+OneshotGetDogAge What's {Dog} age
 
 GetDogGender Are you a boy or a girl
 GetDogGender Are you a boy
@@ -87,11 +118,26 @@ GetDogGender What is your gender
 GetDogGender What's your gender
 GetDogGender What is your sex
 GetDogGender What's your sex
+OneshotGetDogGender Is {Dog} a boy or a girl
+OneshotGetDogGender Is {Dog} a boy
+OneshotGetDogGender Is {Dog} a girl
+OneshotGetDogGender Is {Dog} a male
+OneshotGetDogGender Is {Dog} a female
+OneshotGetDogGender What is {Dog} gender
+OneshotGetDogGender What's {Dog} gender
+OneshotGetDogGender What is {Dog} sex
+OneshotGetDogGender What's {Dog} sex
 
 GetDogActivity What did you do {Date}
 GetDogActivity What he did {Date}
 GetDogActivity What she did {Date}
 GetDogActivity What they did {Date}
+GetDogActivity How was your day {Date}
+GetDogActivity Did you have a good day {Date}
+OneshotGetDogActivity What did {Dog} do {Date}
+OneshotGetDogActivity What {Dog} did {Date}
+OneshotGetDogActivity How was {Dog} day {Date}
+OneshotGetDogActivity Did {Dog} have a good day {Date}
 
 GetDogRestActivity How did you sleep {Date}
 GetDogRestActivity How much did you sleep {Date}
@@ -105,9 +151,26 @@ GetDogRestActivity Did you nap {Date}
 GetDogRestActivity Were you lazy {Date}
 GetDogRestActivity Did you lay around {Date}
 GetDogRestActivity Were you tired {Date}
+OneshotGetDogRestActivity How did {Dog} sleep {Date}
+OneshotGetDogRestActivity How much did {Dog} sleep {Date}
+OneshotGetDogRestActivity How long did {Dog} sleep {Date}
+OneshotGetDogRestActivity How much did {Dog} rest {Date}
+OneshotGetDogRestActivity How long did {Dog} rest {Date}
+OneshotGetDogRestActivity Did {Dog} sleep {Date}
+OneshotGetDogRestActivity How was {Dog} sleep {Date}
+OneshotGetDogRestActivity How did {Dog} rest {Date}
+OneshotGetDogRestActivity Did {Dog} nap {Date}
+OneshotGetDogRestActivity Was {Dog} lazy {Date}
+OneshotGetDogRestActivity Did {Dog} lay around {Date}
+OneshotGetDogRestActivity Was {Dog} tired {Date}
 
 GetDogPlayActivity Did you play {Date}
 GetDogPlayActivity Did you go for a run {Date}
 GetDogPlayActivity Did you have a lot of fun {Date}
 GetDogPlayActivity How much did you play {Date}
 GetDogPlayActivity How long did you play {Date}
+OneshotGetDogPlayActivity Did {Dog} play {Date}
+OneshotGetDogPlayActivity Did {Dog} go for a run {Date}
+OneshotGetDogPlayActivity Did {Dog} have a lot of fun {Date}
+OneshotGetDogPlayActivity How much did {Dog} play {Date}
+OneshotGetDogPlayActivity How long did {Dog} play {Date}
