@@ -54,7 +54,6 @@ function onSessionStarted(sessionStartedRequest, session) {
  */
 function onLaunch(launchRequest, session, callback) {
     console.log(`onLaunch requestId=${launchRequest.requestId}, sessionId=${session.sessionId}`);
-    const dogWhisperer = new DogWhisperer();
     getWelcomeResponse(callback);
 }
 
@@ -106,6 +105,7 @@ function onIntent(intentRequest, session, callback) {
 
 function onSessionEnded(sessionEndedRequest, session) {
     console.log(`onSessionEnded requestId=${sessionEndedRequest.requestId}, sessionId=${session.sessionId}`);
+    handleSessionEndRequest(intent, session, callback);
 }
 
 // --------------------------------------------------------
