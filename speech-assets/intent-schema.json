@@ -37,76 +37,32 @@
       "intent": "GetDogActivity",
       "slots": [
         {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        },
-        {
           "name": "Date",
           "type": "AMAZON.DATE"
         }
       ]
     },
     {
-      "intent": "GetBatteryLevel",
-      "slots": [
-        {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        }
-      ]
+      "intent": "GetBatteryLevel"
     },
     {
-      "intent": "GetSpayedOrNeutered",
-      "slots": [
-        {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        }
-      ]
+      "intent": "GetSpayedOrNeutered"
     },
     {
-      "intent": "GetDogWeight",
-      "slots": [
-        {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        }
-      ]
+      "intent": "GetDogWeight"
     },
     {
-      "intent": "GetDogBirthday",
-      "slots": [
-        {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        }
-      ]
+      "intent": "GetDogBirthday"
     },
     {
-      "intent": "GetDogAge",
-      "slots": [
-        {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        }
-      ]
+      "intent": "GetDogAge"
     },
     {
-      "intent": "GetDogGender",
-      "slots": [
-        {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        }
-      ]
+      "intent": "GetDogGender"
     },
     {
       "intent": "GetDogRestActivity",
       "slots": [
-        {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        },
         {
           "name": "Date",
           "type": "AMAZON.DATE"
@@ -117,10 +73,6 @@
       "intent": "GetDogPlayActivity",
       "slots": [
         {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        },
-        {
           "name": "Date",
           "type": "AMAZON.DATE"
         }
@@ -129,10 +81,6 @@
     {
       "intent": "GetDogActiveActivity",
       "slots": [
-        {
-          "name": "Dog",
-          "type": "DOG_NAMES"
-        },
         {
           "name": "Date",
           "type": "AMAZON.DATE"
