@@ -4,7 +4,16 @@
     This module provides text reponses for dog attributes.
 */
 
-var dateUtil = require('./utils/dateUtil');
+const dateUtil = require('./utils/dateUtil');
+const DOG_NOISES = [
+    'bow-wow',
+    'bark bark',
+    'bark',
+    'woof woof',
+    'woof',
+    'ruff ruff',
+    'rrowff rrowff'
+];
 
 module.exports = {
     breed,
@@ -152,5 +161,9 @@ function activeActivity(dog, activities) {
 }
 
 function _formatResponse(dogName, response){
-    return `${dogName} says: ${response}.`
+    return `${dogName} says: ${_randomDogNoise()} ${response}.`
+}
+
+function _randomDogNoise(){
+    return DOG_NOISES[Math.floor(Math.random()*DOG_NOISES.length)];
 }
