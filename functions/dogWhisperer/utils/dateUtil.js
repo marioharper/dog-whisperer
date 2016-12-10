@@ -26,7 +26,7 @@ function minutesToString(minutes){
     var message = `${minutes} minutes`
 
     if (hours !== 0){
-        message = `${hours} hours and ${message}`
+        message = `${hours} ${(hours === 1)?'hour':'hours'} and ${message}`
     }
 
     return message;
