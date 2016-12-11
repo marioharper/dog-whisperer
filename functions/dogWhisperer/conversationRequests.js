@@ -89,7 +89,7 @@ function getDogDailyGoal(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.dailyGoal(dog);
+        speechOutput = dogResponses.dailyGoal(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -110,7 +110,7 @@ function getDogDailyGoalProgress(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.dailyGoalProgress(dog);
+        speechOutput = dogResponses.getDogDailyGoalProgress(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -131,7 +131,7 @@ function getDogBreed(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.breed(dog);
+        speechOutput = dogResponses.breed(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -152,7 +152,7 @@ function getDogMedicalConditions(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.medicalConditions(dog);
+        speechOutput = dogResponses.medicalConditions(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -173,7 +173,7 @@ function getBatteryLevel(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.batteryLevel(dog);
+        speechOutput = dogResponses.batteryLevel(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -193,7 +193,7 @@ function getDogWeight(intent, session, callback) {
     let speechOutput = '';
 
     if (dog){
-        speechOutput = dogResponses.weight(dog);
+        speechOutput = dogResponses.weight(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -214,7 +214,7 @@ function getSpayedOrNeutered(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.spayedOrNeutered(dog);
+        speechOutput = dogResponses.spayedOrNeutered(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -235,7 +235,7 @@ function getDogBirthday(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.birthday(dog);
+        speechOutput = dogResponses.birthday(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -256,7 +256,7 @@ function getDogAge(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.age(dog);
+        speechOutput = dogResponses.age(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -277,7 +277,7 @@ function getDogGender(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.gender(dog);
+        speechOutput = dogResponses.gender(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -307,7 +307,7 @@ function getDogActivity(intent, session, callback) {
         const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
 
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-            speechOutput = dogResponses.activity(dog, activities);
+            speechOutput = dogResponses.activeActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
             repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
             callback(sessionAttributes,
                 _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -346,7 +346,7 @@ function getDogRestActivity(intent, session, callback) {
         const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
 
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-            speechOutput = dogResponses.restActivity(dog, activities);
+            speechOutput = dogResponses.activeActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
             repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
             callback(sessionAttributes,
                 _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -385,7 +385,7 @@ function getDogPlayActivity(intent, session, callback) {
         const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
 
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-            speechOutput = dogResponses.playActivity(dog, activities);
+            speechOutput = dogResponses.activeActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
             repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
             callback(sessionAttributes,
                 _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -424,7 +424,7 @@ function getDogActiveActivity(intent, session, callback) {
         const activityDate = dateUtil.utcToDogLocal(new Date(activityDateSlot.value), dog.tzoffset*1000);
 
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-            speechOutput = dogResponses.activeActivity(dog, activities);
+            speechOutput = dogResponses.activeActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
             repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
             callback(sessionAttributes,
                 _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));

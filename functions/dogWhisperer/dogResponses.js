@@ -179,7 +179,7 @@ function playActivity(dog, activities) {
 }
 
 function activeActivity(dog, activities) {
-    return _formatResponse(dog.name, `I was active for ${dateUtil.minutesToString(activities[0].min_active)}.`);
+    return _formatResponse(dog.name, `I was active for ${dateUtil.minutesToString(activities[0].min_active)}`);
 }
 
 function _formatResponse(dogName, response){
