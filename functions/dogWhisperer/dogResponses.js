@@ -16,6 +16,8 @@ const DOG_NOISES = [
 ];
 
 module.exports = {
+    dailyGoal,
+    dailyGoalProgress,
     breed,
     medicalConditions,
     batteryLevel,
@@ -32,6 +34,26 @@ module.exports = {
 
 //////////////////////////////////
 
+function dailyGoal(dog){
+    return _formatResponse(dog.name, `My daily goal is ${dog.daily_goal} barkpoints`);
+}
+
+function dailyGoalProgress(dog){
+    const goal = dog.daily_goal;
+    const progress = dog.activity_value;
+    let response;
+
+    if(progress >= goal){
+        response = `I have `
+    } else {
+        response = `I have not yet `;
+    }
+
+    response += `reached my daily goal of ${goal} barkpoints. I am currently at ${progress} points`;
+
+    return _formatResponse(dog.name, response);
+}
+
 function breed(dog) {
     let breed = `a ${dog.breed1.name}`;
 
@@ -39,7 +61,7 @@ function breed(dog) {
         breed = `part ${dog.breed1.name} and part ${dog.breed2.name}`
     }
 
-    return _formateResponse(dog.name, `I am ${breed}`);
+    return _formatResponse(dog.name, `I am ${breed}`);
 }
 
 function medicalConditions(dog) {
@@ -111,7 +133,7 @@ function spayedOrNeutered(dog) {
 
 function birthday(dog) {
     const age = dateUtil.yearDiff(new Date(dog.birth), new Date());
-    return _formatResposne(dog.name, `My birthday is ${dog.birth}. I will be turning ${age + 1}`);
+    return _formatResponse(dog.name, `My birthday is ${dog.birth}. I will be turning ${age + 1}`);
 }
 
 function age(dog) {

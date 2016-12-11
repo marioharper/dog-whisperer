@@ -1,13 +1,20 @@
 SetDogName Talk to {Dog}
+SetDogName Talk to {Dog} for me
+SetDogName Start a conversation with {Dog}
 SetDogName Speak with {Dog}
+SetDogName Speak with {Dog} for me
+SetDogName To talk to {Dog}
+SetDogName To talk to {Dog} for me
 
 GetDogMedicalConditions Do you have any illnesses
 GetDogMedicalConditions Do you have any sicknesses
 GetDogMedicalConditions Are you sick 
 GetDogMedicalConditions Do you have any problems 
 GetDogMedicalConditions What are your illnesses  
+OneshotGetDogMedicalConditions Does {Dog} have any illnesses
 OneshotGetDogMedicalConditions If {Dog} has any illnesses
 OneshotGetDogMedicalConditions What {Dog} illnesses are
+OneshotGetDogMedicalConditions Does {Dog} have any sicknesses
 OneshotGetDogMedicalConditions If {Dog} has any sicknesses
 OneshotGetDogMedicalConditions What {Dog} sicknesses are
 OneshotGetDogMedicalConditions If {Dog} sick
@@ -43,6 +50,8 @@ OneshotGetBatteryLevel What is {Dog} battery percentage
 OneshotGetBatteryLevel What's {Dog} battery percentage
 OneshotGetBatteryLevel Is {Dog} battery running low
 OneshotGetBatteryLevel Is {Dog} collar running low
+OneshotGetBatteryLevel If {Dog} battery running low
+OneshotGetBatteryLevel If {Dog} collar running low
 OneshotGetBatteryLevel Does {Dog} battery need charging
 OneshotGetBatteryLevel Does {Dog} collar need charging
 OneshotGetBatteryLevel How is {Dog} battery level
@@ -63,6 +72,14 @@ OneshotGetSpayedOrNeutered Is {Dog} neutered
 OneshotGetSpayedOrNeutered Is {Dog} spayed
 OneshotGetSpayedOrNeutered Is {Dog} spayed or neutered
 OneshotGetSpayedOrNeutered Is {Dog} fixed
+OneshotGetSpayedOrNeutered If {Dog} is neutered
+OneshotGetSpayedOrNeutered If {Dog} is spayed
+OneshotGetSpayedOrNeutered If {Dog} is spayed or neutered
+OneshotGetSpayedOrNeutered If {Dog} is fixed
+OneshotGetSpayedOrNeutered If {Dog} was is neutered
+OneshotGetSpayedOrNeutered If {Dog} was is spayed
+OneshotGetSpayedOrNeutered If {Dog} was is spayed or neutered
+OneshotGetSpayedOrNeutered If {Dog} was is fixed
 OneshotGetSpayedOrNeutered Was {Dog} neutered
 OneshotGetSpayedOrNeutered Was {Dog} spayed
 OneshotGetSpayedOrNeutered Was {Dog} spayed or neutered
@@ -95,10 +112,14 @@ GetDogBirthday What's the date of your birthday
 OneshotGetDogBirthday When is {Dog} birthday
 OneshotGetDogBirthday When's {Dog} birthday
 OneshotGetDogBirthday Is it {Dog} birthday
+OneshotGetDogBirthday If it is {Dog} birthday
+OneshotGetDogBirthday If it's {Dog} birthday
 OneshotGetDogBirthday What day is {Dog} birthday
 OneshotGetDogBirthday When was {Dog} born
 OneshotGetDogBirthday Is today {Dog} birthday
 OneshotGetDogBirthday Is tomorrow {Dog} birthday
+OneshotGetDogBirthday If today is {Dog} birthday
+OneshotGetDogBirthday If tomorrow is {Dog} birthday
 OneshotGetDogBirthday What is the date of {Dog} birthday
 OneshotGetDogBirthday What's the date of {Dog} birthday
 
@@ -123,6 +144,11 @@ OneshotGetDogGender Is {Dog} a boy
 OneshotGetDogGender Is {Dog} a girl
 OneshotGetDogGender Is {Dog} a male
 OneshotGetDogGender Is {Dog} a female
+OneshotGetDogGender If {Dog} is a boy or a girl
+OneshotGetDogGender If {Dog} is a boy
+OneshotGetDogGender If {Dog} is a girl
+OneshotGetDogGender If {Dog} is a male
+OneshotGetDogGender If {Dog} is a female
 OneshotGetDogGender What is {Dog} gender
 OneshotGetDogGender What's {Dog} gender
 OneshotGetDogGender What is {Dog} sex
@@ -156,6 +182,10 @@ OneshotGetDogRestActivity How much did {Dog} sleep {Date}
 OneshotGetDogRestActivity How long did {Dog} sleep {Date}
 OneshotGetDogRestActivity How much did {Dog} rest {Date}
 OneshotGetDogRestActivity How long did {Dog} rest {Date}
+OneshotGetDogRestActivity How much {Dog} slept {Date}
+OneshotGetDogRestActivity How long {Dog} slept {Date}
+OneshotGetDogRestActivity How much {Dog} rested {Date}
+OneshotGetDogRestActivity How long {Dog} rested {Date}
 OneshotGetDogRestActivity Did {Dog} sleep {Date}
 OneshotGetDogRestActivity How was {Dog} sleep {Date}
 OneshotGetDogRestActivity How did {Dog} rest {Date}
@@ -163,6 +193,11 @@ OneshotGetDogRestActivity Did {Dog} nap {Date}
 OneshotGetDogRestActivity Was {Dog} lazy {Date}
 OneshotGetDogRestActivity Did {Dog} lay around {Date}
 OneshotGetDogRestActivity Was {Dog} tired {Date}
+OneshotGetDogRestActivity If {Dog} napped {Date}
+OneshotGetDogRestActivity If {Dog} slept {Date}
+OneshotGetDogRestActivity If {Dog} was lazy {Date}
+OneshotGetDogRestActivity If {Dog} laid around {Date}
+OneshotGetDogRestActivity If {Dog} was tired {Date}
 
 GetDogPlayActivity Did you play {Date}
 GetDogPlayActivity Did you go for a run {Date}
@@ -174,3 +209,101 @@ OneshotGetDogPlayActivity Did {Dog} go for a run {Date}
 OneshotGetDogPlayActivity Did {Dog} have a lot of fun {Date}
 OneshotGetDogPlayActivity How much did {Dog} play {Date}
 OneshotGetDogPlayActivity How long did {Dog} play {Date}
+OneshotGetDogPlayActivity How much {Dog} played {Date}
+OneshotGetDogPlayActivity How long {Dog} played {Date}
+
+GetDogDailyGoal What's your daily goal
+GetDogDailyGoal What is your daily goal
+GetDogDailyGoal What's your goal
+GetDogDailyGoal What is your goal
+GetDogDailyGoal What's your current daily goal
+GetDogDailyGoal What is your current daily goal
+GetDogDailyGoal What's your current goal
+GetDogDailyGoal What is your current goal
+GetDogDailyGoal What's today's goal
+GetDogDailyGoal What is today's goal
+GetDogDailyGoal What's your goal today
+GetDogDailyGoal What is your goal today
+OneshotGetDogDailyGoal What's {Dog} daily goal
+OneshotGetDogDailyGoal What is {Dog} daily goal
+OneshotGetDogDailyGoal What's {Dog} goal
+OneshotGetDogDailyGoal What is {Dog} goal
+OneshotGetDogDailyGoal What's {Dog} current daily goal
+OneshotGetDogDailyGoal What is {Dog} current daily goal
+OneshotGetDogDailyGoal What's {Dog} current goal
+OneshotGetDogDailyGoal What is {Dog} current goal
+OneshotGetDogDailyGoal What's {Dog} goal today
+OneshotGetDogDailyGoal What is {Dog} goal today
+
+GetDogDailyGoalProgress Have you reached your goal
+GetDogDailyGoalProgress Have you reached your daily goal
+GetDogDailyGoalProgress Have you reached your current daily goal
+GetDogDailyGoalProgress Did you reach your goal
+GetDogDailyGoalProgress Did you reach your daily goal
+GetDogDailyGoalProgress Did you reach your current daily goal
+GetDogDailyGoalProgress Has your goal been reached
+GetDogDailyGoalProgress Has your daily goal been reached
+GetDogDailyGoalProgress Has your current daily goal been reached
+GetDogDailyGoalProgress Have you accomplished your goal
+GetDogDailyGoalProgress Have you accomplished your daily goal
+GetDogDailyGoalProgress Have you accomplished your current daily goal
+GetDogDailyGoalProgress Is your goal complete
+GetDogDailyGoalProgress Is your daily goal complete
+GetDogDailyGoalProgress Is your current daily goal complete
+OneshotGetDogDailyGoalProgress Has {Dog} reached their goal
+OneshotGetDogDailyGoalProgress Has {Dog} reached his goal
+OneshotGetDogDailyGoalProgress Has {Dog} reached her goal
+OneshotGetDogDailyGoalProgress Has {Dog} reached their daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} reached his daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} reached her daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} reached their current daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} reached his current daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} reached her current daily goal
+OneshotGetDogDailyGoalProgress If {Dog} reached their goal
+OneshotGetDogDailyGoalProgress If {Dog} reached his goal
+OneshotGetDogDailyGoalProgress If {Dog} reached her goal
+OneshotGetDogDailyGoalProgress If {Dog} reached their daily goal
+OneshotGetDogDailyGoalProgress If {Dog} reached his daily goal
+OneshotGetDogDailyGoalProgress If {Dog} reached her daily goal
+OneshotGetDogDailyGoalProgress If {Dog} reached their current daily goal
+OneshotGetDogDailyGoalProgress If {Dog} reached his current daily goal
+OneshotGetDogDailyGoalProgress If {Dog} reached her current daily goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach their goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach his goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach her goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach their daily goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach his daily goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach her daily goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach their current daily goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach his current daily goal
+OneshotGetDogDailyGoalProgress Did {Dog} reach her current daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} goal been reached
+OneshotGetDogDailyGoalProgress Has {Dog} daily goal been reached
+OneshotGetDogDailyGoalProgress Has {Dog} current daily goal been reached
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished their goal
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished his goal
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished her goal
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished their daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished his daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished her daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished their current daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished his current daily goal
+OneshotGetDogDailyGoalProgress Has {Dog} accomplished her current daily goal
+OneshotGetDogDailyGoalProgress If {Dog} goal been reached
+OneshotGetDogDailyGoalProgress If {Dog} daily goal been reached
+OneshotGetDogDailyGoalProgress If {Dog} current daily goal been reached
+OneshotGetDogDailyGoalProgress If {Dog} accomplished their goal
+OneshotGetDogDailyGoalProgress If {Dog} accomplished his goal
+OneshotGetDogDailyGoalProgress If {Dog} accomplished her goal
+OneshotGetDogDailyGoalProgress If {Dog} accomplished their daily goal
+OneshotGetDogDailyGoalProgress If {Dog} accomplished his daily goal
+OneshotGetDogDailyGoalProgress If {Dog} accomplished her daily goal
+OneshotGetDogDailyGoalProgress If {Dog} accomplished their current daily goal
+OneshotGetDogDailyGoalProgress If {Dog} accomplished his current daily goal
+OneshotGetDogDailyGoalProgress If {Dog} accomplished her current daily goal
+OneshotGetDogDailyGoalProgress Is {Dog} goal complete
+OneshotGetDogDailyGoalProgress Is {Dog} daily goal complete
+OneshotGetDogDailyGoalProgress If {Dog} current daily goal is complete
+OneshotGetDogDailyGoalProgress If {Dog} goal is complete
+OneshotGetDogDailyGoalProgress If {Dog} daily goal is complete
+OneshotGetDogDailyGoalProgress If {Dog} current daily goal is complete

@@ -65,6 +65,14 @@ function onIntent(intentRequest, session, callback) {
 
     if (intentName === 'SetDogName') {
         conversation.setDogName(intent, session, callback);
+    } else if (intentName === 'GetDogDailyGoal') {
+        conversation.getDogDailyGoal(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogDailyGoal') {
+        oneshot.getDogDailyGoal(intent, session, callback);
+    } else if (intentName === 'GetDogDailyGoalProgress') {
+        conversation.getDogDailyGoalProgress(intent, session, callback);
+    } else if (intentName === 'OneshotGetDogDailyGoalProgress') {
+        oneshot.getDogDailyGoalProgress(intent, session, callback);
     } else if (intentName === 'GetDogMedicalConditions') {
         conversation.getDogMedicalConditions(intent, session, callback);
     } else if (intentName === 'OneshotGetDogMedicalConditions') {

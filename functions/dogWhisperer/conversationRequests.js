@@ -16,6 +16,8 @@ const CACHED_RESPONSES = {
 
 module.exports = {
     setDogName,
+    getDogDailyGoal,
+    getDogDailyGoalProgress,
     getDogBreed,
     getDogMedicalConditions,
     getBatteryLevel,
@@ -63,6 +65,44 @@ function setDogName(intent, session, callback) {
         callback(sessionAttributes,
             _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
+};
+
+function getDogDailyGoal(intent, session, callback) {
+    const cardTitle = intent.name;
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+
+    const dog = _getDogFromSession(session);
+
+    if (dog){
+        speechOutput = dogResponses.dailyGoal(dog);
+    } else {
+        speechOutput = CACHED_RESPONSES.CONVERSATION_NO_DOG;
+    }
+
+    callback(sessionAttributes,
+        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+};
+
+function getDogDailyGoalProgress(intent, session, callback) {
+    const cardTitle = intent.name;
+    let repromptText = '';
+    let sessionAttributes = session.attributes;
+    const shouldEndSession = false;
+    let speechOutput = '';
+
+    const dog = _getDogFromSession(session);
+
+    if (dog){
+        speechOutput = dogResponses.dailyGoalProgress(dog);
+    } else {
+        speechOutput = CACHED_RESPONSES.CONVERSATION_NO_DOG;
+    }
+
+    callback(sessionAttributes,
+        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogBreed(intent, session, callback) {
