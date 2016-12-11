@@ -124,7 +124,7 @@ function onIntent(intentRequest, session, callback) {
     } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
-        handleSessionEndRequest(intent, session, callback);
+        handleSessionEndRequest(callback);
     } else {
         throw new Error('Invalid intent');
     }
@@ -133,7 +133,6 @@ function onIntent(intentRequest, session, callback) {
 
 function onSessionEnded(sessionEndedRequest, session) {
     console.log(`onSessionEnded requestId=${sessionEndedRequest.requestId}, sessionId=${session.sessionId}`);
-    handleSessionEndRequest(intent, session, callback);
 }
 
 // --------------------------------------------------------
@@ -159,9 +158,9 @@ function getWelcomeResponse(callback) {
         _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
-function handleSessionEndRequest(intent, session, callback) {
+function handleSessionEndRequest(callback) {
     const cardTitle = 'Session Ended';
-    let speechOutput = 'Closing Dog Whisperer';
+    let speechOutput = 'Closing Dog Whisperer. Goodbye!';
     const shouldEndSession = true;
 
     callback({}, _buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
