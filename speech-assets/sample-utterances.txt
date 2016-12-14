@@ -212,6 +212,12 @@ OneshotGetDogPlayActivity How long did {Dog} play {Date}
 OneshotGetDogPlayActivity How much {Dog} played {Date}
 OneshotGetDogPlayActivity How long {Dog} played {Date}
 
+GetDogActiveActivity How long were you awake {Date}
+GetDogActiveActivity How long were they awake {Date}
+GetDogActiveActivity How long was he awake {Date}
+GetDogActiveActivity How long was she awake {Date}
+OneshotGetDogActiveActivity How long was {Dog} awake {Date}
+
 GetDogDailyGoal What's your daily goal
 GetDogDailyGoal What is your daily goal
 GetDogDailyGoal What's your goal
