@@ -111,6 +111,7 @@ GetDogBirthday What is the date of your birthday
 GetDogBirthday What's the date of your birthday
 OneshotGetDogBirthday When is {Dog} birthday
 OneshotGetDogBirthday When's {Dog} birthday
+OneshotGetDogBirthday When {Dog} birthday is
 OneshotGetDogBirthday Is it {Dog} birthday
 OneshotGetDogBirthday If it is {Dog} birthday
 OneshotGetDogBirthday If it's {Dog} birthday
