@@ -1,7 +1,8 @@
 'use strict';
 
-var oneshot = require('./oneshotRequests');
-var conversation = require('./conversationRequests');
+const helpers = require('./utils/helpers');
+const oneshot = require('./oneshotRequests');
+const conversation = require('./conversationRequests');
 
 // --------------- Main handler -----------------------
 
@@ -54,6 +55,8 @@ function onSessionStarted(sessionStartedRequest, session) {
  */
 function onLaunch(launchRequest, session, callback) {
     console.log(`onLaunch requestId=${launchRequest.requestId}, sessionId=${session.sessionId}`);
+    const fitBarkAccessToken = helpers.getAccessToken(session, callback);
+
     getWelcomeResponse(callback);
 }
 

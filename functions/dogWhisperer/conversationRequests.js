@@ -1,14 +1,16 @@
 'use strict';
 
+const helpers = require('./utils/helpers');
+
 /*
     This module handles all session based requests. All functions assume
     they are in the context of an ongoing conversation. Thus, the dog in question 
     is retrieved/set in the session. 
 */
 
-var FitBark = require('fitbark-node-client');
-var dogResponses = require('./dogResponses');
-var dateUtil = require('./utils/dateUtil');
+const FitBark = require('fitbark-node-client');
+const dogResponses = require('./dogResponses');
+const dateUtil = require('./utils/dateUtil');
 
 const CACHED_RESPONSES = {
     NO_DOG: "I didn't understand which dog you wanted me to talk to. Which dog would you like to talk to?",
@@ -47,7 +49,7 @@ module.exports = {
 //////////////////////////////
 
 function setDogName(intent, session, callback) {
-    const fitBark = new FitBark(_getAccessToken(session, callback));
+    const fitBark = new FitBark(helpers.getAccessToken(session, callback));
     const cardTitle = intent.name;
     const dogNameSlot = intent.slots.Dog;
     let repromptText = '';
@@ -69,13 +71,13 @@ function setDogName(intent, session, callback) {
             }
 
             callback(sessionAttributes,
-                _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+                helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         });
 
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
         callback(sessionAttributes,
-            _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+            helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
 };
 
@@ -97,7 +99,7 @@ function getDogDailyGoal(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogDailyGoalProgress(intent, session, callback) {
@@ -118,7 +120,7 @@ function getDogDailyGoalProgress(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogBreed(intent, session, callback) {
@@ -139,7 +141,7 @@ function getDogBreed(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogMedicalConditions(intent, session, callback) {
@@ -160,7 +162,7 @@ function getDogMedicalConditions(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getBatteryLevel(intent, session, callback) {
@@ -181,7 +183,7 @@ function getBatteryLevel(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogWeight(intent, session, callback) {
@@ -201,7 +203,7 @@ function getDogWeight(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getSpayedOrNeutered(intent, session, callback) {
@@ -222,7 +224,7 @@ function getSpayedOrNeutered(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogBirthday(intent, session, callback) {
@@ -243,7 +245,7 @@ function getDogBirthday(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogAge(intent, session, callback) {
@@ -264,7 +266,7 @@ function getDogAge(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogGender(intent, session, callback) {
@@ -285,11 +287,11 @@ function getDogGender(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function getDogActivity(intent, session, callback) {
-    const fitBark = new FitBark(_getAccessToken(session, callback));
+    const fitBark = new FitBark(helpers.getAccessToken(session, callback));
     const cardTitle = intent.name;
     // if not supplied, default to today
     let activityDate = intent.slots.Date && intent.slots.Date.value || new Date();
@@ -311,7 +313,7 @@ function getDogActivity(intent, session, callback) {
             speechOutput = dogResponses.activity(dog, activities) + ` You can now ask ${dog.name} another question.`;
             repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
             callback(sessionAttributes,
-                _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+                helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         });
     }catch(err){
         if(err.message === 'no dog'){
@@ -324,12 +326,12 @@ function getDogActivity(intent, session, callback) {
         }
 
         callback(sessionAttributes,
-            _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+            helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
 };
 
 function getDogRestActivity(intent, session, callback) {
-    const fitBark = new FitBark(_getAccessToken(session, callback));
+    const fitBark = new FitBark(helpers.getAccessToken(session, callback));
     const cardTitle = intent.name;
     // if not supplied, default to today
     let activityDate = intent.slots.Date && intent.slots.Date.value || new Date();
@@ -348,10 +350,10 @@ function getDogRestActivity(intent, session, callback) {
         activityDate = dateUtil.utcToDogLocal(new Date(activityDate), dog.tzoffset*1000);
 
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-            speechOutput = dogResponses.activeActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
+            speechOutput = dogResponses.restActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
             repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
             callback(sessionAttributes,
-                _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+                helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         });
     }catch(err){
         if(err.message === 'no dog'){
@@ -364,12 +366,12 @@ function getDogRestActivity(intent, session, callback) {
         }
 
         callback(sessionAttributes,
-            _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+            helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
 };
 
 function getDogPlayActivity(intent, session, callback) {
-    const fitBark = new FitBark(_getAccessToken(session, callback));
+    const fitBark = new FitBark(helpers.getAccessToken(session, callback));
     const cardTitle = intent.name;
     // if not supplied, default to today
     let activityDate = intent.slots.Date && intent.slots.Date.value || new Date();
@@ -388,10 +390,10 @@ function getDogPlayActivity(intent, session, callback) {
         activityDate = dateUtil.utcToDogLocal(new Date(activityDate), dog.tzoffset*1000);
 
         fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-            speechOutput = dogResponses.activeActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
+            speechOutput = dogResponses.playActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
             repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
             callback(sessionAttributes,
-                _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+                helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         });
     }catch(err){
         if(err.message === 'no dog'){
@@ -404,12 +406,12 @@ function getDogPlayActivity(intent, session, callback) {
         }
 
         callback(sessionAttributes,
-            _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+            helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
 };
 
 function getDogActiveActivity(intent, session, callback) {
-    const fitBark = new FitBark(_getAccessToken(session, callback));
+    const fitBark = new FitBark(helpers.getAccessToken(session, callback));
     const cardTitle = intent.name;
     // if not supplied, default to today
     let activityDate = intent.slots.Date && intent.slots.Date.value || new Date();
@@ -431,7 +433,7 @@ function getDogActiveActivity(intent, session, callback) {
             speechOutput = dogResponses.activeActivity(dog, activities) + ` You can now ask ${dog.name} another question.`;
             repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
             callback(sessionAttributes,
-                _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+                helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         });
     }catch(err){
         if(err.message === 'no dog'){
@@ -444,33 +446,9 @@ function getDogActiveActivity(intent, session, callback) {
         }
 
         callback(sessionAttributes,
-            _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+            helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
 };
-
-function _getAccessToken(session, callback) {
-    // check for FITBARK account
-    const accessToken = session.user.accessToken;
-    if (!accessToken) { // no access token
-        const linkAccountResponseJSON = {
-            "version": "1.0",
-            "response": {
-                "outputSpeech": {
-                    "type": "PlainText",
-                    "text": "You must have a FitBark account to use this skill. Please use the Alexa app to link your Amazon account with your FitBark Account."
-                },
-                "card": {
-                    "type": "LinkAccount"
-                },
-                "shouldEndSession": true
-            }
-        };
-
-        callback(session.attributes, linkAccountResponseJSON);
-    } else {
-        return accessToken;
-    }
-}
 
 function _getDogFromSession(session) {
     let dog;
@@ -485,26 +463,5 @@ function _getDogFromSession(session) {
 function _createSessionAttributes(dog) {
     return {
         dog,
-    };
-}
-
-function _buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
-    return {
-        outputSpeech: {
-            type: 'PlainText',
-            text: output
-        },
-        card: {
-            type: 'Simple',
-            title: `SessionSpeechlet - ${title}`,
-            content: `SessionSpeechlet - ${output}`
-        },
-        reprompt: {
-            outputSpeech: {
-                type: 'PlainText',
-                text: repromptText
-            },
-        },
-        shouldEndSession
     };
 }
