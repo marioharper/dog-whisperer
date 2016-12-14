@@ -101,10 +101,6 @@ function batteryLevel(dog) {
     return _formatResponse(dog.name, `My battery is at ${dog.battery_level} percent. My FitBark ${recommendation}`);
 }
 
-function activity(activities) {
-    return _formatResponse(dog.name, `I played for ${dateUtil.minutesToString(activities[0].min_play)}, was active for ${dateUtil.minutesToString(activities[0].min_active)}, and slept for ${dateUtil.minutesToString(activities[0].min_rest)}`);
-}
-
 function weight(dog) {
     return _formatResponse(dog.name, `I weigh ${dog.weight} ${dog.weight_unit}`);
 }

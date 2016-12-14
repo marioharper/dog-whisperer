@@ -5,6 +5,7 @@ SetDogName Speak with {Dog}
 SetDogName Speak with {Dog} for me
 SetDogName To talk to {Dog}
 SetDogName To talk to {Dog} for me
+SetDogName {Dog}
 
 GetDogMedicalConditions Do you have any illnesses
 GetDogMedicalConditions Do you have any sicknesses
