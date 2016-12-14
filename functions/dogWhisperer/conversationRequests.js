@@ -66,7 +66,7 @@ function setDogName(intent, session, callback) {
                 speechOutput = `I can now speak to ${dog.name} for you. Say something like, what did you do yesterday?`;
                 repromptText = `You can ask me to say anything to ${dog.name}, try something like what did you do yesterday?`;
             } else {
-                speechOutput = `I did not recognize ${dogName} as a dog related to you. Please try talking to a dog you are related to.`;
+                speechOutput = `I did not recognize ${dogName} as one of your dogs using the FitBark activity and sleep monitor. Please make sure you have setup your dog in the FitBark application. Is there a different dog you would like to talk to?`;
                 repromptText = `You can only talk to dogs you have a relation to. Please tell me which dog to talk to by saying, talk to maxwell`;
             }
 
