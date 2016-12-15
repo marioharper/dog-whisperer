@@ -37,7 +37,7 @@ module.exports = {
 
 function getDogDailyGoal(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog daily goal';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -73,7 +73,7 @@ function getDogDailyGoal(intent, session, callback) {
 
 function getDogDailyGoalProgress(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog daily goal progress';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -109,7 +109,7 @@ function getDogDailyGoalProgress(intent, session, callback) {
 
 function getDogBreed(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog breed';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -145,7 +145,7 @@ function getDogBreed(intent, session, callback) {
 
 function getDogMedicalConditions(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog medical conditions';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -181,7 +181,7 @@ function getDogMedicalConditions(intent, session, callback) {
 
 function getBatteryLevel(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Fitbark collar battery level';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -217,7 +217,7 @@ function getBatteryLevel(intent, session, callback) {
 
 function getDogWeight(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog weight';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -253,7 +253,7 @@ function getDogWeight(intent, session, callback) {
 
 function getSpayedOrNeutered(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog spayed or neutered';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -289,7 +289,7 @@ function getSpayedOrNeutered(intent, session, callback) {
 
 function getDogBirthday(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog birthday';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -325,7 +325,7 @@ function getDogBirthday(intent, session, callback) {
 
 function getDogAge(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog age';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -361,7 +361,7 @@ function getDogAge(intent, session, callback) {
 
 function getDogGender(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog gender';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -397,7 +397,7 @@ function getDogGender(intent, session, callback) {
 
 function getDogActivity(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog activity';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -444,7 +444,7 @@ function getDogActivity(intent, session, callback) {
 
 function getDogRestActivity(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog rest activity';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -492,7 +492,7 @@ function getDogRestActivity(intent, session, callback) {
 
 function getDogPlayActivity(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog play activity';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;
@@ -540,7 +540,7 @@ function getDogPlayActivity(intent, session, callback) {
 
 function getDogActiveActivity(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog awake activity';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     const shouldEndSession = true;

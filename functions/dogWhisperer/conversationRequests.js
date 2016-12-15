@@ -50,7 +50,7 @@ module.exports = {
 
 function setDogName(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Set dog name';
     const dogNameSlot = intent.slots.Dog;
     let repromptText = '';
     let sessionAttributes = {};
@@ -82,7 +82,7 @@ function setDogName(intent, session, callback) {
 };
 
 function getDogDailyGoal(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog daily goal';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -103,7 +103,7 @@ function getDogDailyGoal(intent, session, callback) {
 };
 
 function getDogDailyGoalProgress(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog daily goal progress';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -112,7 +112,7 @@ function getDogDailyGoalProgress(intent, session, callback) {
     const dog = _getDogFromSession(session);
 
     if (dog){
-        speechOutput = dogResponses.getDogDailyGoalProgress(dog) + ` You can now ask ${dog.name} another question.`;
+        speechOutput = dogResponses.dailyGoalProgress(dog) + ` You can now ask ${dog.name} another question.`;
         repromptText = `Ask ${dog.name} something else like, ${CACHED_RESPONSES.getRandomExample()}`
     } else {
         speechOutput = CACHED_RESPONSES.NO_DOG;
@@ -124,7 +124,7 @@ function getDogDailyGoalProgress(intent, session, callback) {
 };
 
 function getDogBreed(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog breed';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -145,7 +145,7 @@ function getDogBreed(intent, session, callback) {
 };
 
 function getDogMedicalConditions(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog medical conditions';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -166,7 +166,7 @@ function getDogMedicalConditions(intent, session, callback) {
 };
 
 function getBatteryLevel(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'FitBark collar battery level';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -187,7 +187,7 @@ function getBatteryLevel(intent, session, callback) {
 };
 
 function getDogWeight(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog weight';
     const dog = _getDogFromSession(session);
     let repromptText = '';
     let sessionAttributes = session.attributes;
@@ -207,7 +207,7 @@ function getDogWeight(intent, session, callback) {
 };
 
 function getSpayedOrNeutered(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog spayed or neutered';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -228,7 +228,7 @@ function getSpayedOrNeutered(intent, session, callback) {
 };
 
 function getDogBirthday(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog birthday';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -249,7 +249,7 @@ function getDogBirthday(intent, session, callback) {
 };
 
 function getDogAge(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog age';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -270,7 +270,7 @@ function getDogAge(intent, session, callback) {
 };
 
 function getDogGender(intent, session, callback) {
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog gender';
     let repromptText = '';
     let sessionAttributes = session.attributes;
     let shouldEndSession = false;
@@ -292,7 +292,7 @@ function getDogGender(intent, session, callback) {
 
 function getDogActivity(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog activity';
     // if not supplied, default to today
     let activityDate = intent.slots.Date && intent.slots.Date.value || new Date();
     let repromptText = '';
@@ -332,7 +332,7 @@ function getDogActivity(intent, session, callback) {
 
 function getDogRestActivity(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog rest activity';
     // if not supplied, default to today
     let activityDate = intent.slots.Date && intent.slots.Date.value || new Date();
     let repromptText = '';
@@ -372,7 +372,7 @@ function getDogRestActivity(intent, session, callback) {
 
 function getDogPlayActivity(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog play activity';
     // if not supplied, default to today
     let activityDate = intent.slots.Date && intent.slots.Date.value || new Date();
     let repromptText = '';
@@ -412,7 +412,7 @@ function getDogPlayActivity(intent, session, callback) {
 
 function getDogActiveActivity(intent, session, callback) {
     const fitBark = new FitBark(helpers.getAccessToken(session, callback));
-    const cardTitle = intent.name;
+    const cardTitle = 'Dog awake activity';
     // if not supplied, default to today
     let activityDate = intent.slots.Date && intent.slots.Date.value || new Date();
     let repromptText = '';
