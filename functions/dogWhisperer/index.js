@@ -158,7 +158,7 @@ function getWelcomeResponse(callback) {
     const shouldEndSession = false;
 
     callback(sessionAttributes,
-        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 };
 
 function handleSessionEndRequest(callback) {
@@ -166,28 +166,7 @@ function handleSessionEndRequest(callback) {
     let speechOutput = 'Closing Dog Whisperer. Goodbye!';
     const shouldEndSession = true;
 
-    callback({}, _buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
+    callback({}, helpers.buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
 };
-
-function _buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
-    return {
-        outputSpeech: {
-            type: 'PlainText',
-            text: output
-        },
-        card: {
-            type: 'Simple',
-            title: `SessionSpeechlet - ${title}`,
-            content: `SessionSpeechlet - ${output}`
-        },
-        reprompt: {
-            outputSpeech: {
-                type: 'PlainText',
-                text: repromptText
-            },
-        },
-        shouldEndSession
-    };
-}
 
 

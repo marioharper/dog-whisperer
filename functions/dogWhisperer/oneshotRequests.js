@@ -377,7 +377,7 @@ function getDogGender(intent, session, callback) {
                 speechOutput = dogResponses.gender(dog);
             } else {
                 speechOutput = `I did not recognize ${dogName} as a dog related to you. Please try talking to a dog you are related to.`;
-            } 
+            }
 
             callback(sessionAttributes,
                 helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
@@ -411,15 +411,18 @@ function getDogActivity(intent, session, callback) {
         const dogName = _formatDogName(dogNameSlot.value);
 
         fitBark.getDog(dogName).then((dog) => {
-            
-            if (!dog){
+
+            if (!dog) {
                 throw new Error(`unrelated dog`)
             }
 
             activityDate = dateUtil.utcToDogLocal(new Date(activityDate), dog.tzoffset * 1000);
             fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-                speechOutput = dogResponses.activity(dog, activities);
-                console.log(activities);
+                if (activities.length === 0) {
+                    speechOutput = `No activity found for ${activityDate}.`;
+                } else {
+                    speechOutput = dogResponses.activity(dog, activities);
+                }
                 callback(sessionAttributes,
                     helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
             });
@@ -458,15 +461,18 @@ function getDogRestActivity(intent, session, callback) {
         const dogName = _formatDogName(dogNameSlot.value);
 
         fitBark.getDog(dogName).then((dog) => {
-            
-            if (!dog){
+
+            if (!dog) {
                 throw new Error(`unrelated dog`)
             }
 
             activityDate = dateUtil.utcToDogLocal(new Date(activityDate), dog.tzoffset * 1000);
             fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-                speechOutput = dogResponses.restActivity(dog, activities);
-                console.log(activities);
+                if (activities.length === 0) {
+                    speechOutput = `No activity found for ${activityDate}.`;
+                } else {
+                    speechOutput = dogResponses.restActivity(dog, activities);
+                }
                 callback(sessionAttributes,
                     helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
             });
@@ -506,15 +512,18 @@ function getDogPlayActivity(intent, session, callback) {
         const dogName = _formatDogName(dogNameSlot.value);
 
         fitBark.getDog(dogName).then((dog) => {
-            
-            if (!dog){
+
+            if (!dog) {
                 throw new Error(`unrelated dog`)
             }
 
             activityDate = dateUtil.utcToDogLocal(new Date(activityDate), dog.tzoffset * 1000);
             fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-                speechOutput = dogResponses.playActivity(dog, activities);
-                console.log(activities);
+                if (activities.length === 0) {
+                    speechOutput = `No activity found for ${activityDate}.`;
+                } else {
+                    speechOutput = dogResponses.playActivity(dog, activities);
+                }
                 callback(sessionAttributes,
                     helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
             });
@@ -554,15 +563,18 @@ function getDogActiveActivity(intent, session, callback) {
         const dogName = _formatDogName(dogNameSlot.value);
 
         fitBark.getDog(dogName).then((dog) => {
-            
-            if (!dog){
+
+            if (!dog) {
                 throw new Error(`unrelated dog`)
             }
 
             activityDate = dateUtil.utcToDogLocal(new Date(activityDate), dog.tzoffset * 1000);
             fitBark.getActivitySeries(dog.slug, activityDate, activityDate, 'DAILY').then(function (activities) {
-                speechOutput = dogResponses.activeActivity(dog, activities);
-                console.log(activities);
+                if (activities.length === 0) {
+                    speechOutput = `No activity found for ${activityDate}.`;
+                } else {
+                    speechOutput = dogResponses.activeActivity(dog, activities);
+                }
                 callback(sessionAttributes,
                     helpers.buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
             });
