@@ -8,7 +8,7 @@ module.exports = {
 function getAccessToken(session, callback) {
     // check for FITBARK account
     const accessToken = session.user.accessToken;
-    if (!accessToken) { // no access token
+    if (accessToken === undefined || accessToken === "" || accessToken === null) { // no access token
         const linkAccountResponseJSON = {
             outputSpeech: {
                 type: "PlainText",
