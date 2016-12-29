@@ -62,8 +62,8 @@ function onLaunch(launchRequest, session, callback) {
 
 function onIntent(intentRequest, session, callback) {
     console.log(`onIntent requestId=${intentRequest.requestId}, sessionId=${session.sessionId}`);
-    console.log('intent request: ', intentRequest);
-    console.log('session: ', session);
+    console.log('intent request: ', JSON.stringify(intentRequest));
+    console.log('session: ', JSON.stringify(session));
 
     const intent = intentRequest.intent;
     const intentName = intentRequest.intent.name;
