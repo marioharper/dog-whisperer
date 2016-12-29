@@ -179,7 +179,9 @@ function activeActivity(dog, activities) {
 }
 
 function _formatResponse(dogName, response){
-    return `${dogName} says: ${_randomDogNoise()} ${response}.`
+    const formatted = `${dogName} says: ${_randomDogNoise()} ${response}.`;
+    console.log('dog response: ', formatted);
+    return formatted;
 }
 
 function _randomDogNoise(){
