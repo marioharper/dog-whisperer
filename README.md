@@ -1,3 +1,5 @@
+[ ![Codeship Status for marioharper/dog-whisperer](https://app.codeship.com/projects/812b3e40-b00f-0134-de55-2ab52889eaea/status?branch=master)](https://app.codeship.com/projects/193050)
+
 # Dog Whisperer for Amazon Alexa
 ![Dog Whisperer Logo](logo/dog-whisperer.png)
 
